@@ -1,19 +1,43 @@
 <Project>
-    <Target Name="PropertyWarnings">
-        <Warning 
-            Condition="'$(PackageTags)' == ''" 
-            Text="PackageTags is not set; consider setting it for better package discoverability."
-        />
-        <Warning
-            Condition="'$(PackageProjectUrl)' == ''"
-            Text="PackageProjectUrl is not set; consider setting it so customers can navigate more easily."
-        />
-    </Target>
-    
-    <PropertyGroup Condition="'$(IsPackable)' == ''">
-        <IsPackable>true</IsPackable>
+    <Import Project="Sdk.tasks"/>
+
+    <!-- Forced common properties -->
+    <PropertyGroup>
+        <Deterministic>true</Deterministic>
+        <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
     
+    <!-- Fallback copyright properties -->
+    <PropertyGroup Condition="'$(LegalCopyrightHolder)' == ''">
+        <LegalCopyrightHolder>$(LegalAuthor)</LegalCopyrightHolder>
+    </PropertyGroup>
+
+    <!-- Fallback nuget properties -->
+    <PropertyGroup Condition="'$(Authors)' == ''">
+        <Authors>$(LegalAuthor)</Authors>
+    </PropertyGroup>
+
+    <!-- Forced nuget properties -->
+    <PropertyGroup>
+        <Copyright>$(LegalCopyrightHolder) $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
+
+        <IncludeSymbols>true</IncludeSymbols>
+        <IncludeSource>true</IncludeSource>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <EmbedAllSources>true</EmbedAllSources>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <!-- Forced code inspection properties -->
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <AnalysisLevel>7</AnalysisLevel>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <!-- Analyzers -->
     <ItemGroup>
         <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.406" PrivateAssets="all" />
         <PackageReference Include="Remora.Results.Analyzers" Version="1.0.0-preview2" PrivateAssets="all" />
@@ -36,9 +60,14 @@
     </ItemGroup>
 
     <!-- NuGet Icon -->
-    <ItemGroup Condition="$(IsPackable)">
-        <None Include="$(MSBuildThisFileDirectory)/images/shark.png" Pack="true" PackagePath="/">
-            <Link>shark.png</Link>
+    <PropertyGroup Condition="$(IsPackable) And Exists('$(PackageIconPath)')">
+        <IconName>$([System.IO.Path]::GetFileName('$(PackageIconPath)'))</IconName>
+        <PackageIcon>$(IconName)</PackageIcon>
+    </PropertyGroup>
+    
+    <ItemGroup Condition="$(IsPackable) And Exists('$(PackageIconPath)')">
+        <None Include="$(PackageIconPath)" Pack="true" PackagePath="/">
+            <Link>$(IconName)</Link>
             <InProject>false</InProject>
         </None>
     </ItemGroup>
@@ -48,5 +77,76 @@
         <None Include="$(MSBuildProjectDirectory)/README.md" Pack="true" PackagePath="/">
             <Link>README.md</Link>
         </None>
+    </ItemGroup>
+
+    <!-- Status checks -->
+    <Target Name="RemoraPackablePropertyChecks" Condition="$(IsPackable)" BeforeTargets="Pack">
+        <Warning
+                Condition="'$(PackageTags)' == ''"
+                Text="PackageTags is not set; consider setting it for better package discoverability."
+                Code="RS0001"
+        />
+        <Warning
+                Condition="'$(PackageProjectUrl)' == ''"
+                Text="PackageProjectUrl is not set; consider setting it so customers can navigate more easily."
+                Code="RS0002"
+        />
+        <Warning
+                Condition="'$(Authors)' == ''"
+                Text="Authors is not set; consider setting it for better package metadata."
+                Code="RS0003"
+        />
+    </Target>
+
+    <!-- Stylecop configuration generation -->
+    <PropertyGroup>
+        <StylecopRuleset>$(MSBuildThisFileDirectory)/inspections/stylecop.ruleset</StylecopRuleset>
+        <StylecopTemplatePath>$(MSBuildThisFileDirectory)/inspections/stylecop.template.json</StylecopTemplatePath>
+        <StylecopOutputPath>$(BaseIntermediateOutputPath)/stylecop.json</StylecopOutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <CodeAnalysisRuleSet>$(StylecopRuleset)</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
+    <Target Name="GenerateStylecopJson" BeforeTargets="DispatchToInnerBuilds" DependsOnTargets="RemoraPropertyChecks">
+        <Error
+                Condition="'$(LegalCopyrightHolder)' == ''"
+                Text="LegalCompanyName is not set; this must be the name of the entity the source code copyright belongs to."
+        />
+        <Error
+                Condition="'$(LegalAuthor)' == ''"
+                Text="LegalAuthor is not set; this must be the name of the entity the source code was authored by."
+        />
+        <Error
+                Condition="'$(LegalEmail)' == ''"
+                Text="LegalEmail is not set; this must be the email address of the entity the source code was authored by."
+        />
+        <ReplaceFileText
+                InputFilename="$(StylecopTemplatePath)"
+                OutputFilename="$(StylecopOutputPath)"
+                MatchExpression="__REMORA_COPYRIGHT_HOLDER_MARKER"
+                ReplacementText="$(LegalCopyrightHolder)" />
+        <ReplaceFileText
+                InputFilename="$(StylecopOutputPath)"
+                OutputFilename="$(StylecopOutputPath)"
+                MatchExpression="__REMORA_AUTHOR_MARKER"
+                ReplacementText="$(LegalAuthor)" />
+        <ReplaceFileText
+                InputFilename="$(StylecopOutputPath)"
+                OutputFilename="$(StylecopOutputPath)"
+                MatchExpression="__REMORA_EMAIL_MARKER"
+                ReplacementText="$(LegalEmail)" />
+    </Target>
+
+    <ItemGroup>
+        <AdditionalFiles Include="$(StylecopOutputPath)">
+            <Link>stylecop.json</Link>
+            <InProject>false</InProject>
+        </AdditionalFiles>
+        <AdditionalFiles Include="$(StylecopRuleset)">
+            <Link>stylecop.ruleset</Link>
+            <InProject>false</InProject>
+        </AdditionalFiles>
     </ItemGroup>
 </Project>

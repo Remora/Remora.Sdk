@@ -1,13 +1,8 @@
 <Project Sdk="Remora.Sdk/1.0.0">
-
+    
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <LegalAuthor>Jarl Gullberg</LegalAuthor>
+        <LegalEmail>jarl.gullberg@gmail.com</LegalEmail>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\Remora.Sdk\Remora.Sdk.csproj" />
-    </ItemGroup>
 
 </Project>
