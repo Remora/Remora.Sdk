@@ -1,0 +1,52 @@
+<Project>
+    <Target Name="PropertyWarnings">
+        <Warning 
+            Condition="'$(PackageTags)' == ''" 
+            Text="PackageTags is not set; consider setting it for better package discoverability."
+        />
+        <Warning
+            Condition="'$(PackageProjectUrl)' == ''"
+            Text="PackageProjectUrl is not set; consider setting it so customers can navigate more easily."
+        />
+    </Target>
+    
+    <PropertyGroup Condition="'$(IsPackable)' == ''">
+        <IsPackable>true</IsPackable>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.406" PrivateAssets="all" />
+        <PackageReference Include="Remora.Results.Analyzers" Version="1.0.0-preview2" PrivateAssets="all" />
+    </ItemGroup>
+
+    <!-- Language support packages -->
+    <ItemGroup>
+        <PackageReference Include="Nullable" Version="1.3.1" PrivateAssets="all" />
+        <PackageReference Include="IsExternalInit" Version="1.0.3" PrivateAssets="all" />
+    </ItemGroup>
+
+    <!-- JetBrains Annotations -->
+    <ItemGroup>
+        <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" PrivateAssets="all" />
+    </ItemGroup>
+
+    <!-- SourceLink -->
+    <ItemGroup Condition="$(IsPackable)">
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+    </ItemGroup>
+
+    <!-- NuGet Icon -->
+    <ItemGroup Condition="$(IsPackable)">
+        <None Include="$(MSBuildThisFileDirectory)/images/shark.png" Pack="true" PackagePath="/">
+            <Link>shark.png</Link>
+            <InProject>false</InProject>
+        </None>
+    </ItemGroup>
+
+    <!-- NuGet README -->
+    <ItemGroup Condition="$(IsPackable)">
+        <None Include="$(MSBuildProjectDirectory)/README.md" Pack="true" PackagePath="/">
+            <Link>README.md</Link>
+        </None>
+    </ItemGroup>
+</Project>

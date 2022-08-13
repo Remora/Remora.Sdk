@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remora.Sdk", "Remora.Sdk\Remora.Sdk.csproj", "{060D4556-DD64-453B-B79E-D602E9AA87F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remora.Tests.Sdk", "Remora.Tests.Sdk\Remora.Tests.Sdk.csproj", "{10815AC2-0F9B-4C06-9EA0-317A766B2A5F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "metadata", "metadata", "{C24DCE64-A955-4039-B930-93C219188BF7}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D8CE147D-0DC3-4C76-90A2-0A33FC314093}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryProject", "Tests\LibraryProject\LibraryProject.csproj", "{C7797FEE-FCD6-452B-99B2-4EC00A574992}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C7797FEE-FCD6-452B-99B2-4EC00A574992} = {D8CE147D-0DC3-4C76-90A2-0A33FC314093}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{060D4556-DD64-453B-B79E-D602E9AA87F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{060D4556-DD64-453B-B79E-D602E9AA87F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10815AC2-0F9B-4C06-9EA0-317A766B2A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10815AC2-0F9B-4C06-9EA0-317A766B2A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7797FEE-FCD6-452B-99B2-4EC00A574992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7797FEE-FCD6-452B-99B2-4EC00A574992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7797FEE-FCD6-452B-99B2-4EC00A574992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7797FEE-FCD6-452B-99B2-4EC00A574992}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

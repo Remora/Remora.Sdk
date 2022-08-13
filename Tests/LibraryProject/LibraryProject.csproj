@@ -1,0 +1,13 @@
+<Project Sdk="Remora.Sdk/1.0.0">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Remora.Sdk\Remora.Sdk.csproj" />
+    </ItemGroup>
+
+</Project>

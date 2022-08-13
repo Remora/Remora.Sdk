@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <DefaultItemExcludes>*log</DefaultItemExcludes>
+    <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
+    <LangVersion>Latest</LangVersion>
+    <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
+    <NoWarn>$(NoWarn);NU5128;SA0001</NoWarn>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)nuget</PackageOutputPath>
+  </PropertyGroup>
+</Project>

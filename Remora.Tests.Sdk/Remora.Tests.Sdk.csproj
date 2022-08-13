@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.Build.NoTargets/3.5.6">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Description>Provides default properties and targets for Remora-style unit test projects.</Description>
+        <Version>1.0.0</Version>
+        <PackageTags>MSBuild;MSBuildSdk;Remora;Tests;Unit Tests</PackageTags>
+        <PackageType>MSBuildSdk</PackageType>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+</Project>
