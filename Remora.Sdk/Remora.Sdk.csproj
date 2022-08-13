@@ -5,8 +5,10 @@
     </PropertyGroup>
 
     <PropertyGroup>
+        <Title>Remora.Sdk</Title>
         <Description>Provides default properties and targets for Remora-style projects.</Description>
         <Version>1.0.0</Version>
+        <IsPackable>true</IsPackable>
         <PackageTags>MSBuild;MSBuildSdk;Remora</PackageTags>
         <PackageType>MSBuildSdk</PackageType>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

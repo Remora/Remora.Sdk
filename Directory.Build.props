@@ -4,6 +4,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageOutputPath>$(MSBuildThisFileDirectory)nuget</PackageOutputPath>
+    <Authors>Jarl Gullberg</Authors>
+    <Copyright>$(Authors) $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)/nuget</PackageOutputPath>
+    <PackageIconPath>$(MSBuildThisFileDirectory)/images/shark.png</PackageIconPath>
+    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 </Project>

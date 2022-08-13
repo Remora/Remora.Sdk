@@ -5,8 +5,10 @@
     </PropertyGroup>
 
     <PropertyGroup>
+        <Title>Remora.Tests.Sdk</Title>
         <Description>Provides default properties and targets for Remora-style unit test projects.</Description>
         <Version>1.0.0</Version>
+        <IsPackable>true</IsPackable>
         <PackageTags>MSBuild;MSBuildSdk;Remora;Tests;Unit Tests</PackageTags>
         <PackageType>MSBuildSdk</PackageType>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
