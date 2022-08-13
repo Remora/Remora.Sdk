@@ -28,6 +28,7 @@
         <EmbedAllSources>true</EmbedAllSources>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>$(LegalLicense)</PackageLicenseExpression>
     </PropertyGroup>
 
     <!-- Forced code inspection properties -->
@@ -109,7 +110,11 @@
         <CodeAnalysisRuleSet>$(StylecopRuleset)</CodeAnalysisRuleSet>
     </PropertyGroup>
 
-    <Target Name="GenerateStylecopJson" BeforeTargets="DispatchToInnerBuilds" DependsOnTargets="RemoraPropertyChecks">
+    <Target Name="GenerateStylecopJson" BeforeTargets="DispatchToInnerBuilds">
+        <Error
+                Condition="'$(LegalLicense)' == ''"
+                Text="LegalLicense is not set; this must be a license expression denoting the license the source code is distributed under."
+        />
         <Error
                 Condition="'$(LegalCopyrightHolder)' == ''"
                 Text="LegalCompanyName is not set; this must be the name of the entity the source code copyright belongs to."
@@ -122,6 +127,12 @@
                 Condition="'$(LegalEmail)' == ''"
                 Text="LegalEmail is not set; this must be the email address of the entity the source code was authored by."
         />
+
+        <PropertyGroup>
+            <LicenseTextFile>$(MSBuildThisFileDirectory)/license-headers/$(LegalLicense)</LicenseTextFile>
+            <LicenseText>$([System.IO.File]::ReadAllText('$(LicenseTextFile)').Replace('%0a', '\n').Replace("/", "\/"))</LicenseText>
+        </PropertyGroup>
+
         <ReplaceFileText
                 InputFilename="$(StylecopTemplatePath)"
                 OutputFilename="$(StylecopOutputPath)"
@@ -137,6 +148,11 @@
                 OutputFilename="$(StylecopOutputPath)"
                 MatchExpression="__REMORA_EMAIL_MARKER"
                 ReplacementText="$(LegalEmail)" />
+        <ReplaceFileText
+                InputFilename="$(StylecopOutputPath)"
+                OutputFilename="$(StylecopOutputPath)"
+                MatchExpression="__REMORA_COPYRIGHT_TEXT_MARKER"
+                ReplacementText="$(LicenseText)" />
     </Target>
 
     <ItemGroup>

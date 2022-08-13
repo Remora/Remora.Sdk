@@ -1,12 +1,22 @@
-<!--
-    This file contains common properties for all projects. It is divided into multiple sections, depending on the use
-    case for the properties.
--->
-
 <Project Sdk="Microsoft.NET.Sdk">
+    <!-- Default targeting configuration -->
+    <PropertyGroup>
+        <LibraryFrameworks>netstandard2.1;net6.0</LibraryFrameworks>
+        <ExecutableFrameworks>net6.0</ExecutableFrameworks>
+
+        <!-- Default for all projects -->
+        <!--suppress MsbuildTargetFrameworkTagInspection -->
+        <TargetFrameworks>$(LibraryFrameworks)</TargetFrameworks>
+    </PropertyGroup>
+
     <!-- Default common properties -->
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <!-- Default legal properites -->
+    <PropertyGroup>
+        <LegalLicense>LGPL-3.0-or-later</LegalLicense>
     </PropertyGroup>
 
     <!-- Default nuget properties -->
@@ -16,7 +26,6 @@
         <Authors>Jarl Gullberg</Authors>
 
         <PackageIconPath>$(MSBuildThisFileDirectory)/images/shark.png</PackageIconPath>
-        <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
@@ -62,15 +71,5 @@
             AD0001;
             SA0001;
         </NoWarn>
-    </PropertyGroup>
-
-    <!-- Default targeting properties -->
-    <PropertyGroup>
-        <LibraryFrameworks>netstandard2.1;net6.0</LibraryFrameworks>
-        <ExecutableFrameworks>net6.0</ExecutableFrameworks>
-
-        <!-- Default for all projects -->
-        <!--suppress MsbuildTargetFrameworkTagInspection -->
-        <TargetFrameworks>$(LibraryFrameworks)</TargetFrameworks>
     </PropertyGroup>
 </Project>
