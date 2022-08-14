@@ -1,5 +1,6 @@
-<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="VersionInformation.props"/>
+<Project>
+    <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+    <Import Project="VersionInformation.props" />
 
     <!-- Default targeting configuration -->
     <PropertyGroup>

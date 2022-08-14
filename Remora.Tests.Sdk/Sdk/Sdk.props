@@ -1,4 +1,6 @@
-<Project Sdk="Remora.Sdk/1.0.0">
+<Project>
+    <Import Project="Sdk.props" Sdk="Remora.Sdk" Version="1.0.0" />
+
     <!-- Override target frameworks -->
     <PropertyGroup>
         <TargetFrameworks>$([System.Text.RegularExpressions.Regex]::Replace($(LibraryFrameworks), 'netstandard.+?;', ''))</TargetFrameworks>
