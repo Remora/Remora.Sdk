@@ -101,11 +101,6 @@
                 Text="PackageProjectUrl is not set; consider setting it so customers can navigate more easily."
                 Code="RS0002"
         />
-        <Warning
-                Condition="'$(Authors)' == ''"
-                Text="Authors is not set; consider setting it for better package metadata."
-                Code="RS0003"
-        />
     </Target>
 
     <!-- Stylecop configuration generation -->
