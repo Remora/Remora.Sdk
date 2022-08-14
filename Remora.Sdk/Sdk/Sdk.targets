@@ -111,7 +111,7 @@
         <CodeAnalysisRuleSet>$(StylecopRuleset)</CodeAnalysisRuleSet>
     </PropertyGroup>
 
-    <Target Name="GenerateStylecopJson" Inputs="$(MSBuildProjectFile)" Outputs="$(StylecopOutputPath)" BeforeTargets="BeforeBuild;BeforeRebuild">
+    <Target Name="GenerateStylecopJson" BeforeTargets="CompileDesignTime;Compile">
         <Error
                 Condition="'$(LegalLicense)' == ''"
                 Text="LegalLicense is not set; this must be a license expression denoting the license the source code is distributed under."
