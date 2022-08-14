@@ -1,0 +1,19 @@
+<Project>
+    <ItemGroup>
+        <RemoraSdkPackages Include="$(LocalRepoRoot)/$(RemoraSdkName).$(RemoraSdkVersion).nupkg">
+            <LowerFilename>$([System.String]::Copy('%(filename)').ToLowerInvariant())</LowerFilename>
+            <Version>$([System.Text.RegularExpressions.Regex]::Match('%(LowerFilename)', '\d+\.\d+\.\d+$'))</Version>
+            <LowerName>$([System.String]::Copy('%(LowerFilename)').Replace('.%(Version)', ''))</LowerName>
+        </RemoraSdkPackages>
+    </ItemGroup>
+
+    <Target 
+            Name="RegenerateRemoraSdk"
+            Inputs="@(RemoraSdkPackages)"
+            Outputs="@(RemoraSdkPackages->'$(NuGetPackageRoot)/%(LowerName)/%(Version)/%(LowerFilename).nupkg')"
+            BeforeTargets="Build">
+        <Message Importance="high" Text="Regenerating SDK cache for $(RemoraSdkName)/$(RemoraSdkVersion)" />
+        <RemoveDir Directories="$(NuGetPackageRoot)/$(RemoraSdkName.ToLowerInvariant)/$(RemoraSdkVersion)" />
+        <CallTarget Targets="Restore" />
+    </Target>
+</Project>
