@@ -1,4 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="VersionInformation.props"/>
+
     <!-- Default targeting configuration -->
     <PropertyGroup>
         <LibraryFrameworks>netstandard2.1;net6.0</LibraryFrameworks>
