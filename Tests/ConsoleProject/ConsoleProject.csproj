@@ -1,0 +1,10 @@
+<Project Sdk="Remora.Sdk/1.0.0">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <LegalAuthor>Jarl Gullberg</LegalAuthor>
+        <LegalEmail>jarl.gullberg@gmail.com</LegalEmail>
+    </PropertyGroup>
+</Project>
