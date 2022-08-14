@@ -1,2 +1,5 @@
 <Project>
+    <PropertyGroup>
+        <LocalRepoPath>$(MSBuildThisFileDirectory)/../nuget</LocalRepoPath>
+    </PropertyGroup>
 </Project>

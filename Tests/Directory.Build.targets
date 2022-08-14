@@ -1,19 +1,28 @@
 <Project>
     <ItemGroup>
-        <RemoraSdkPackages Include="$(LocalRepoRoot)/$(RemoraSdkName).$(RemoraSdkVersion).nupkg">
+        <RemoraSdkPackages Include="$(LocalRepoPath)/$(RemoraSdkName).$(RemoraSdkVersion).nupkg">
             <LowerFilename>$([System.String]::Copy('%(filename)').ToLowerInvariant())</LowerFilename>
             <Version>$([System.Text.RegularExpressions.Regex]::Match('%(LowerFilename)', '\d+\.\d+\.\d+$'))</Version>
             <LowerName>$([System.String]::Copy('%(LowerFilename)').Replace('.%(Version)', ''))</LowerName>
         </RemoraSdkPackages>
     </ItemGroup>
 
-    <Target 
-            Name="RegenerateRemoraSdk"
-            Inputs="@(RemoraSdkPackages)"
-            Outputs="@(RemoraSdkPackages->'$(NuGetPackageRoot)/%(LowerName)/%(Version)/%(LowerFilename).nupkg')"
-            BeforeTargets="Build">
-        <Message Importance="high" Text="Regenerating SDK cache for $(RemoraSdkName)/$(RemoraSdkVersion)" />
-        <RemoveDir Directories="$(NuGetPackageRoot)/$(RemoraSdkName.ToLowerInvariant)/$(RemoraSdkVersion)" />
+    <Target Name="RegenerateRemoraSdk" BeforeTargets="Build">
+        <GetFileHash Files="@(RemoraSdkPackages)">
+            <Output TaskParameter="Items" ItemName="RemoraRepoPackagesWithHashes" />
+        </GetFileHash>
+
+        <GetFileHash Files="@(RemoraSdkPackages->'$(NuGetPackageRoot)/%(LowerName)/%(Version)/%(LowerFilename).nupkg')">
+            <Output TaskParameter="Items" ItemName="RemoraCachedPackagesWithHashes" />
+        </GetFileHash>
+
+        <PropertyGroup>
+            <NeedsRegeneration>false</NeedsRegeneration>
+            <NeedsRegeneration Condition="'@(RemoraRepoPackagesWithHashes->'%(FileHash)')' != '@(RemoraCachedPackagesWithHashes->'%(FileHash)')'">true</NeedsRegeneration>
+        </PropertyGroup>
+
+        <Message Importance="high" Condition="$(NeedsRegeneration)" Text="Regenerating SDK cache for $(RemoraSdkName)/$(RemoraSdkVersion)" />
+        <RemoveDir Condition="$(NeedsRegeneration)" Directories="$(NuGetPackageRoot)/$(RemoraSdkName.ToLowerInvariant())/$(RemoraSdkVersion)" />
         <CallTarget Targets="Restore" />
     </Target>
 </Project>
