@@ -118,7 +118,7 @@
         />
         <Error
                 Condition="'$(LegalCopyrightHolder)' == ''"
-                Text="LegalCompanyName is not set; this must be the name of the entity the source code copyright belongs to."
+                Text="LegalCopyrightHolder is not set; this must be the name of the entity the source code copyright belongs to."
         />
         <Error
                 Condition="'$(LegalAuthor)' == ''"
