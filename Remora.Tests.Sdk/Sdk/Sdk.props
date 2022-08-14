@@ -4,6 +4,6 @@
 
     <!-- Override target frameworks -->
     <PropertyGroup>
-        <TargetFrameworks>$([System.Text.RegularExpressions.Regex]::Replace($(LibraryFrameworks), 'netstandard.+?;', ''))</TargetFrameworks>
+        <LibraryFrameworks>$(ExecutableFrameworks)</LibraryFrameworks>
     </PropertyGroup>
 </Project>
