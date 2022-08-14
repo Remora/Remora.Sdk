@@ -94,12 +94,10 @@
         <Warning
                 Condition="'$(PackageTags)' == ''"
                 Text="PackageTags is not set; consider setting it for better package discoverability."
-                Code="RS0001"
         />
         <Warning
                 Condition="'$(PackageProjectUrl)' == ''"
                 Text="PackageProjectUrl is not set; consider setting it so customers can navigate more easily."
-                Code="RS0002"
         />
     </Target>
 
