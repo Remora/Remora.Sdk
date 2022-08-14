@@ -121,6 +121,10 @@
     </PropertyGroup>
 
     <Target Name="GenerateStylecopJson" BeforeTargets="CompileDesignTime;Compile">
+        <PropertyGroup Condition="'$(LicenseTextFile)' == ''">
+            <LicenseTextFile>$(MSBuildThisFileDirectory)/license-headers/$(LegalLicense)</LicenseTextFile>
+        </PropertyGroup>
+
         <Error
                 Condition="'$(LegalLicense)' == ''"
                 Text="LegalLicense is not set; this must be a license expression denoting the license the source code is distributed under."
@@ -137,9 +141,12 @@
                 Condition="'$(LegalEmail)' == ''"
                 Text="LegalEmail is not set; this must be the email address of the entity the source code was authored by."
         />
+        <Error
+                Condition="'$(LicenseTextFile)' == ''"
+                Text="LicenseTextFile is not set; this must be a filesystem path to the license header text used for source code."
+        />
 
         <PropertyGroup>
-            <LicenseTextFile>$(MSBuildThisFileDirectory)/license-headers/$(LegalLicense)</LicenseTextFile>
             <LicenseText>$([System.IO.File]::ReadAllText('$(LicenseTextFile)').Replace('%0a', '\n').Replace("/", "\/"))</LicenseText>
         </PropertyGroup>
 
