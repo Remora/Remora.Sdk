@@ -2,7 +2,7 @@
     <ItemGroup Condition="$(IsPackable)">
         <None Include="Sdk\**" Pack="true" PackagePath="Sdk" />
     </ItemGroup>
-    
+
     <!-- NuGet README -->
     <ItemGroup Condition="$(IsPackable)">
         <None Include="$(MSBuildProjectDirectory)/README.md" Pack="true" PackagePath="/">
@@ -38,7 +38,7 @@
                 ]]>
             </VersionInformationContent>
         </PropertyGroup>
-        <WriteLinesToFile File="$(BaseIntermediateOutputPath)/VersionInformation.props" Lines="$(VersionInformationContent)"/>
+        <WriteLinesToFile File="$(BaseIntermediateOutputPath)/VersionInformation.props" Lines="$(VersionInformationContent)" Overwrite="true"/>
     </Target>
 
     <ItemGroup>
