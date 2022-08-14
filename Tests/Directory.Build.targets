@@ -7,7 +7,7 @@
         </RemoraSdkPackages>
     </ItemGroup>
 
-    <Target Name="RegenerateRemoraSdk" BeforeTargets="_GenerateRestoreSpecs;GenerateStylecopJson">
+    <Target Name="RegenerateRemoraSdk" BeforeTargets="GenerateStylecopJson" AfterTargets="Restore">
         <GetFileHash Files="@(RemoraSdkPackages)">
             <Output TaskParameter="Items" ItemName="RemoraRepoPackagesWithHashes" />
         </GetFileHash>
