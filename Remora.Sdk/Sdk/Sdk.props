@@ -74,4 +74,9 @@
             SA0001;
         </NoWarn>
     </PropertyGroup>
+
+    <!-- stylecop.json generation helpers -->
+    <PropertyGroup>
+        <IsOuterBuild>true</IsOuterBuild>
+    </PropertyGroup>
 </Project>
