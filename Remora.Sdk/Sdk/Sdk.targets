@@ -1,4 +1,13 @@
 <Project>
+    <!-- Fallback targeting properties -->
+    <PropertyGroup Condition="'$(TargetFramework)' == '' And '$(TargetFrameworks)' == ''">
+        <!--suppress MsbuildTargetFrameworkTagInspection -->
+        <TargetFrameworks>$(LibraryFrameworks)</TargetFrameworks>
+
+        <!--suppress MsbuildTargetFrameworkTagInspection -->
+        <TargetFrameworks Condition="'$(OutputType)' == 'Exe'">$(ExecutableFrameworks)</TargetFrameworks>
+    </PropertyGroup>
+
     <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
     <Import Project="Sdk.tasks"/>
 

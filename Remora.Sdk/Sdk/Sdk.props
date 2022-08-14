@@ -6,10 +6,6 @@
     <PropertyGroup>
         <LibraryFrameworks>netstandard2.1;net6.0</LibraryFrameworks>
         <ExecutableFrameworks>net6.0</ExecutableFrameworks>
-
-        <!-- Default for all projects -->
-        <!--suppress MsbuildTargetFrameworkTagInspection -->
-        <TargetFrameworks>$(LibraryFrameworks)</TargetFrameworks>
     </PropertyGroup>
 
     <!-- Default common properties -->
