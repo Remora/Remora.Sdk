@@ -65,7 +65,7 @@
         <IconName>$([System.IO.Path]::GetFileName('$(PackageIconPath)'))</IconName>
         <PackageIcon>$(IconName)</PackageIcon>
     </PropertyGroup>
-    
+
     <ItemGroup Condition="$(IsPackable) And Exists('$(PackageIconPath)')">
         <None Include="$(PackageIconPath)" Pack="true" PackagePath="/">
             <Link>$(IconName)</Link>
