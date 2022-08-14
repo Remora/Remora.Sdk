@@ -6,7 +6,7 @@
         <Deterministic>true</Deterministic>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
-    
+
     <!-- Fallback copyright properties -->
     <PropertyGroup Condition="'$(LegalCopyrightHolder)' == ''">
         <LegalCopyrightHolder>$(LegalAuthor)</LegalCopyrightHolder>
@@ -110,7 +110,15 @@
         <CodeAnalysisRuleSet>$(StylecopRuleset)</CodeAnalysisRuleSet>
     </PropertyGroup>
 
-    <Target Name="GenerateStylecopJson" BeforeTargets="DispatchToInnerBuilds">
+    <PropertyGroup>
+        <IsOuterBuild Condition="'$(IsOuterBuild)' == ''">false</IsOuterBuild>
+        <StylecopGenerationBeforeTargets>BuildDependsOn</StylecopGenerationBeforeTargets>
+        <StylecopGenerationBeforeTargets Condition="$(IsOuterBuild)">DispatchToInnerBuilds</StylecopGenerationBeforeTargets>
+        <ShouldRunGeneration>false</ShouldRunGeneration>
+        <ShouldRunGeneration Condition="'$(TargetFrameworks)' == '' Or $(IsOuterBuild)">true</ShouldRunGeneration>
+    </PropertyGroup>
+
+    <Target Name="GenerateStylecopJson" Condition="$(ShouldRunGeneration)" BeforeTargets="$(StylecopGenerationBeforeTargets)">
         <Error
                 Condition="'$(LegalLicense)' == ''"
                 Text="LegalLicense is not set; this must be a license expression denoting the license the source code is distributed under."
