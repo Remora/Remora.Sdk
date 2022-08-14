@@ -6,9 +6,4 @@
     <PropertyGroup>
         <TargetFrameworks>$([System.Text.RegularExpressions.Regex]::Replace($(LibraryFrameworks), 'netstandard.+?;', ''))</TargetFrameworks>
     </PropertyGroup>
-
-    <!-- Override packability -->
-    <PropertyGroup>
-        <IsPackable>false</IsPackable>
-    </PropertyGroup>
 </Project>
