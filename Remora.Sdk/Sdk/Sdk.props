@@ -22,7 +22,6 @@
     <PropertyGroup>
         <IsPackable>true</IsPackable>
         <Title>$(AssemblyName)</Title>
-        <Authors>Jarl Gullberg</Authors>
 
         <PackageIconPath>$(MSBuildThisFileDirectory)/images/shark.png</PackageIconPath>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
