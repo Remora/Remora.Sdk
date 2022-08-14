@@ -7,7 +7,7 @@
         </RemoraSdkPackages>
     </ItemGroup>
 
-    <Target Name="RegenerateRemoraSdk" BeforeTargets="Build">
+    <Target Name="RegenerateRemoraSdk" BeforeTargets="BeforeBuild;GenerateStylecopJson">
         <GetFileHash Files="@(RemoraSdkPackages)">
             <Output TaskParameter="Items" ItemName="RemoraRepoPackagesWithHashes" />
         </GetFileHash>
@@ -23,6 +23,5 @@
 
         <Message Importance="high" Condition="$(NeedsRegeneration)" Text="Regenerating SDK cache for $(RemoraSdkName)/$(RemoraSdkVersion)" />
         <RemoveDir Condition="$(NeedsRegeneration)" Directories="$(NuGetPackageRoot)/$(RemoraSdkName.ToLowerInvariant())/$(RemoraSdkVersion)" />
-        <CallTarget Targets="Restore" />
     </Target>
 </Project>
