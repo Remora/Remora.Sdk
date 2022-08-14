@@ -110,15 +110,7 @@
         <CodeAnalysisRuleSet>$(StylecopRuleset)</CodeAnalysisRuleSet>
     </PropertyGroup>
 
-    <PropertyGroup>
-        <IsOuterBuild Condition="'$(IsOuterBuild)' == ''">false</IsOuterBuild>
-        <StylecopGenerationBeforeTargets>BuildDependsOn</StylecopGenerationBeforeTargets>
-        <StylecopGenerationBeforeTargets Condition="$(IsOuterBuild)">DispatchToInnerBuilds</StylecopGenerationBeforeTargets>
-        <ShouldRunGeneration>false</ShouldRunGeneration>
-        <ShouldRunGeneration Condition="'$(TargetFrameworks)' == '' Or $(IsOuterBuild)">true</ShouldRunGeneration>
-    </PropertyGroup>
-
-    <Target Name="GenerateStylecopJson" Condition="$(ShouldRunGeneration)" BeforeTargets="$(StylecopGenerationBeforeTargets)">
+    <Target Name="GenerateStylecopJson" Inputs="$(MSBuildProjectFile)" Outputs="$(StylecopOutputPath)" BeforeTargets="BeforeBuild;BeforeRebuild">
         <Error
                 Condition="'$(LegalLicense)' == ''"
                 Text="LegalLicense is not set; this must be a license expression denoting the license the source code is distributed under."
