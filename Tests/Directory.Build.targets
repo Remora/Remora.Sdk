@@ -2,7 +2,7 @@
     <ItemGroup>
         <RemoraSdkPackages Include="$(LocalRepoPath)/$(RemoraSdkName).$(RemoraSdkVersion).nupkg">
             <LowerFilename>$([System.String]::Copy('%(filename)').ToLowerInvariant())</LowerFilename>
-            <Version>$([System.Text.RegularExpressions.Regex]::Match('%(LowerFilename)', '\d+\.\d+\.\d+$'))</Version>
+            <Version>$([System.Text.RegularExpressions.Regex]::Match('%(LowerFilename)', '\d+\.\d+\.\d+(-.+)?$'))</Version>
             <LowerName>$([System.String]::Copy('%(LowerFilename)').Replace('.%(Version)', ''))</LowerName>
         </RemoraSdkPackages>
     </ItemGroup>
