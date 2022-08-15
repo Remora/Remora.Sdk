@@ -62,6 +62,13 @@ The following packages are added by the SDK.
 | xunit.runner.console      | Enables console-initiated test runs   |
 | coverlet.collector        | Enables code coverage collection      |
 
+### Code Analysis
+The following packages are added by the SDK.
+
+| Package         | Purpose                            |
+|-----------------|------------------------------------|
+| xunit.analyzers | Provides code inspection for xunit |
+
 ### Code Coverage
 The following properties are defined by the SDK.
 

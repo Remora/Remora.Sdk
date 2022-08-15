@@ -21,4 +21,8 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="xunit.analyzers" Version="0.10.0" PrivateAssets="all"/>
+    </ItemGroup>
 </Project>
