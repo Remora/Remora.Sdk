@@ -102,6 +102,18 @@ cannot be enabled without violating standard C# style rules have been disabled.
 The vast majority of StyleCop.Analyzers' inspections have been promoted to 
 compilation errors; it is highly encouraged to leave it this way. 
 
+### Code Coverage
+The following properties are defined by the SDK.
+
+| Property                                  | Value | Overridable |
+|-------------------------------------------|-------|-------------|
+| ExcludeNonRunnableFrameworksFromCoverage* | true  | Yes         |
+
+
+This property controls disabling of coverage generations for assemblies that
+target .NET Standard which would otherwise artificially deflate coverage 
+percentages.
+
 ### NuGet Package Generation
 The following properties are defined by the SDK.
 

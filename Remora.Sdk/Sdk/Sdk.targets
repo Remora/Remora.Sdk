@@ -94,6 +94,11 @@
         </None>
     </ItemGroup>
 
+    <!-- Code coverage -->
+    <ItemGroup Condition="'$(ExcludeNonRunnableFrameworksFromCoverage)' == 'true' And '$(TargetFramework.TrimEnd(`0123456789.`))' == 'netstandard'">
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
+    </ItemGroup>
+
     <!-- Status checks -->
     <Target Name="RemoraPackablePropertyChecks" Condition="$(IsPackable)" BeforeTargets="Pack">
         <Warning
