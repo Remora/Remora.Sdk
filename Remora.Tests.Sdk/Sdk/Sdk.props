@@ -6,4 +6,9 @@
     <PropertyGroup>
         <LibraryFrameworks>$(ExecutableFrameworks)</LibraryFrameworks>
     </PropertyGroup>
+
+    <!-- Default code coverage properties -->
+    <PropertyGroup>
+        <ExcludeTestsFromCoverage>true</ExcludeTestsFromCoverage>
+    </PropertyGroup>
 </Project>

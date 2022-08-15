@@ -61,3 +61,10 @@ The following packages are added by the SDK.
 | xunit.runner.visualstudio | Enables IDE-integrated test runs      |
 | xunit.runner.console      | Enables console-initiated test runs   |
 | coverlet.collector        | Enables code coverage collection      |
+
+### Code Coverage
+The following properties are defined by the SDK.
+
+| Property                  | Value | Overridable |
+|---------------------------|-------|-------------|
+| ExcludeTestsFromCoverage* | true  | Yes         |
