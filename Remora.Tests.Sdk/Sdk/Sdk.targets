@@ -8,7 +8,7 @@
 
     <!-- Suppress code coverage if requested -->
     <ItemGroup Condition="'$(ExcludeTestsFromCoverage)' == 'true'">
-        <AssemblyAttribute Condition="$(TargetFramework)' != 'netstandard2.0'" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
+        <AssemblyAttribute Condition="'$(TargetFramework)' != 'netstandard2.0'" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
     </ItemGroup>
 
     <ItemGroup>

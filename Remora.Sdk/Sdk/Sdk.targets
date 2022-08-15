@@ -96,7 +96,7 @@
 
     <!-- Code coverage -->
     <ItemGroup Condition="'$(ExcludeNonRunnableFrameworksFromCoverage)' == 'true' And '$(TargetFramework.TrimEnd(`0123456789.`))' == 'netstandard'">
-        <AssemblyAttribute Condition="$(TargetFramework)' != 'netstandard2.0'" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
+        <AssemblyAttribute Condition="'$(TargetFramework)' != 'netstandard2.0'" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
     </ItemGroup>
 
     <!-- Status checks -->
