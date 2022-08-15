@@ -1,5 +1,5 @@
 <Project>
-    <Import Project="Sdk.targets" Sdk="Remora.Sdk" Version="1.0.0-preview5" />
+    <Import Project="Sdk.targets" Sdk="Remora.Sdk" Version="1.0.0-preview6" />
 
     <!-- Override packability -->
     <PropertyGroup>
