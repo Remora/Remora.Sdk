@@ -27,15 +27,20 @@
         <Authors>$(LegalAuthor)</Authors>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(IncludeBuildOutput)' == ''">
+        <IncludeBuildOutput>true</IncludeBuildOutput>
+    </PropertyGroup>
+
     <!-- Forced nuget properties -->
     <PropertyGroup>
         <Copyright>$(LegalCopyrightHolder) $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
 
-        <IncludeSymbols>true</IncludeSymbols>
-        <IncludeSource>true</IncludeSource>
+        <IncludeSymbols>$(IncludeBuildOutput)</IncludeSymbols>
+        <IncludeSource>$(IncludeBuildOutput)</IncludeSource>
+        <EmbedUntrackedSources>$(IncludeBuildOutput)</EmbedUntrackedSources>
+        <EmbedAllSources>$(IncludeBuildOutput)</EmbedAllSources>
+
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <EmbedAllSources>true</EmbedAllSources>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>$(LegalLicense)</PackageLicenseExpression>

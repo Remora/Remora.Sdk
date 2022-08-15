@@ -113,11 +113,11 @@ The following properties are defined by the SDK.
 | PackageIconPath*                | (internal)                             | Yes         |
 | PackageRequireLicenseAcceptance | true                                   | Yes         |
 | Copyright                       | $(LegalCopyrightHolder) <current year> | No          |
-| IncludeSymbols                  | true                                   | No          |
-| IncludeSource                   | true                                   | No          |
+| IncludeSymbols                  | $(IncludeBuildOutput)                  | No          |
+| IncludeSource                   | $(IncludeBuildOutput)                  | No          |
+| EmbedUntrackedSources           | $(IncludeBuildOutput)                  | No          |
+| EmbedAllSources                 | $(IncludeBuildOutput)                  | No          |
 | PublishRepositoryUrl            | true                                   | No          |
-| EmbedUntrackedSources           | true                                   | No          |
-| EmbedAllSources                 | true                                   | No          |
 | SymbolPackageFormat             | snupkg                                 | No          |
 | PackageReadmeFile               | README.md                              | No          |
 | PackageLicenseExpression        | $(LegalLicense)                        | No          |
