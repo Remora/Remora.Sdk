@@ -1,5 +1,5 @@
 <Project>
-    <Import Project="Sdk.props" Sdk="Remora.Sdk" Version="1.0.0-preview1" />
+    <Import Project="Sdk.props" Sdk="Remora.Sdk" Version="1.0.0-preview2" />
     <Import Project="VersionInformation.props" />
 
     <!-- Override target frameworks -->
