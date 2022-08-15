@@ -4,32 +4,33 @@
 
     <!-- Default targeting configuration -->
     <PropertyGroup>
-        <LibraryFrameworks>netstandard2.1;net6.0</LibraryFrameworks>
-        <ExecutableFrameworks>net6.0</ExecutableFrameworks>
+        <LibraryFrameworks Condition="'$(LibraryFrameworks)' == ''">netstandard2.1;net6.0</LibraryFrameworks>
+        <ExecutableFrameworks Condition="'$(ExecutableFrameworks)' == ''">net6.0</ExecutableFrameworks>
     </PropertyGroup>
 
     <!-- Default common properties -->
     <PropertyGroup>
-        <LangVersion>latest</LangVersion>
+        <LangVersion Condition="'$(LangVersion)' == ''">latest</LangVersion>
     </PropertyGroup>
 
     <!-- Default legal properites -->
     <PropertyGroup>
-        <LegalLicense>LGPL-3.0-or-later</LegalLicense>
+        <LegalLicense Condition="'$(LegalLicense)' == ''">LGPL-3.0-or-later</LegalLicense>
     </PropertyGroup>
 
     <!-- Default nuget properties -->
     <PropertyGroup>
-        <IsPackable>true</IsPackable>
-        <Title>$(AssemblyName)</Title>
+        <IsPackable Condition="'$(IsPackable)' == ''">true</IsPackable>
+        <Title Condition="'$(Title)' == ''">$(AssemblyName)</Title>
 
-        <PackageIconPath>$(MSBuildThisFileDirectory)/images/shark.png</PackageIconPath>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageIconPath Condition="'$(PackageIconPath)' == ''">$(MSBuildThisFileDirectory)/images/shark.png</PackageIconPath>
+        <PackageRequireLicenseAcceptance Condition="'$(PackageRequireLicenseAcceptance)' == ''">true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
     <!-- Default code inspection properties -->
     <PropertyGroup>
         <WarningsAsErrors>
+            $(WarningsAsErrors);
             CS8600;
             CS8601;
             CS8602;
@@ -65,6 +66,7 @@
             CS8765;
         </WarningsAsErrors>
         <NoWarn>
+            $(NoWarn);
             CS8632;
             AD0001;
             SA0001;
@@ -73,6 +75,6 @@
 
     <!-- Code coverage -->
     <PropertyGroup>
-        <ExcludeNonRunnableFrameworksFromCoverage>true</ExcludeNonRunnableFrameworksFromCoverage>
+        <ExcludeNonRunnableFrameworksFromCoverage Condition="'$(ExcludeNonRunnableFrameworksFromCoverage)' == ''">true</ExcludeNonRunnableFrameworksFromCoverage>
     </PropertyGroup>
 </Project>
