@@ -1,5 +1,5 @@
 <Project>
-    <Import Project="Sdk.targets" Sdk="Remora.Sdk" Version="1.0.0-preview4" />
+    <Import Project="Sdk.targets" Sdk="Remora.Sdk" Version="1.0.0-preview5" />
 
     <!-- Override packability -->
     <PropertyGroup>
@@ -8,7 +8,7 @@
 
     <!-- Suppress code coverage if requested -->
     <ItemGroup Condition="'$(ExcludeTestsFromCoverage)' == 'true'">
-        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
+        <AssemblyAttribute Condition="$(TargetFramework)' != 'netstandard2.0'" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
     </ItemGroup>
 
     <ItemGroup>
