@@ -176,7 +176,6 @@
         <CreateProperty Value="true">
             <Output TaskParameter="Value" PropertyName="HasGeneratedStylecopJson" />
         </CreateProperty>
-        <Message Importance="high" Text="Generated stylecop.json" />
     </Target>
 
     <ItemGroup>
