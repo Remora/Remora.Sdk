@@ -22,26 +22,4 @@
             <InProject>false</InProject>
         </None>
     </ItemGroup>
-
-    <!-- Embedded name & version information -->
-    <Target Name="GenerateEmbeddedInformation" Inputs="$(MSBuildProjectFile)" Outputs="$(BaseIntermediateOutputPath)/VersionInformation.props" BeforeTargets="Build">
-        <PropertyGroup>
-            <VersionInformationContent>
-                <![CDATA[
-<Project>
-    <PropertyGroup>
-        <RemoraSdkName>$(Title)</RemoraSdkName>
-        <RemoraSdkVersion>$(Version)</RemoraSdkVersion>
-    </PropertyGroup>
- </Project>
-
-                ]]>
-            </VersionInformationContent>
-        </PropertyGroup>
-        <WriteLinesToFile File="$(BaseIntermediateOutputPath)/VersionInformation.props" Lines="$(VersionInformationContent)" Overwrite="true"/>
-    </Target>
-
-    <ItemGroup>
-        <None Include="$(BaseIntermediateOutputPath)/VersionInformation.props" Pack="true" PackagePath="Sdk" />
-    </ItemGroup>
 </Project>
