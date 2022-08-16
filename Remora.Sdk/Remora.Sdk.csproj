@@ -11,6 +11,5 @@
         <IsPackable>true</IsPackable>
         <PackageTags>MSBuild;MSBuildSdk;Remora</PackageTags>
         <PackageType>MSBuildSdk</PackageType>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 </Project>
