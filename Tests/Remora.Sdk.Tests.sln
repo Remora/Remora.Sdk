@@ -2,12 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryProject", "LibraryProject\LibraryProject.csproj", "{A12FD5D6-2068-456B-A91A-C598552ECB48}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "metadata", "metadata", "{7BE40F7A-2A0D-439E-91E8-2D84D1962D6F}"
-	ProjectSection(SolutionItems) = preProject
-		Directory.Build.targets = Directory.Build.targets
-		Directory.Build.props = Directory.Build.props
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleProject", "ConsoleProject\ConsoleProject.csproj", "{0198E7B8-41BC-43B9-88BE-AAAA6CAE6F08}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{4F886691-E6EE-489C-8EA2-475AFF08A8BD}"

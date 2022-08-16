@@ -1,4 +1,6 @@
-<Project Sdk="Remora.Sdk/1.0.0-preview1">
+<Project>
+    <Import Project="../../Remora.Sdk/Sdk/Sdk.props" />
+
     <PropertyGroup>
         <OutputType>Exe</OutputType>
     </PropertyGroup>
@@ -7,4 +9,6 @@
         <LegalAuthor>Jarl Gullberg</LegalAuthor>
         <LegalEmail>jarl.gullberg@gmail.com</LegalEmail>
     </PropertyGroup>
+
+    <Import Project="../../Remora.Sdk/Sdk/Sdk.targets" />
 </Project>
