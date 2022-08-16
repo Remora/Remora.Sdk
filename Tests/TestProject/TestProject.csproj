@@ -1,4 +1,8 @@
 <Project>
+    <PropertyGroup>
+        <_RemoraInSourceBuild>true</_RemoraInSourceBuild>
+    </PropertyGroup>
+
     <Import Project="../../Remora.Tests.Sdk/Sdk/Sdk.props" />
 
     <PropertyGroup>

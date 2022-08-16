@@ -1,5 +1,6 @@
 <Project>
-    <Import Project="Sdk.targets" Sdk="Remora.Sdk" Version="1.0.0-preview7" />
+    <Import Project="Sdk.targets" Sdk="Remora.Sdk" Version="1.0.0-preview7" Condition="'$(_RemoraInSourceBuild)' != 'true'"/>
+    <Import Project="../../Remora.Sdk/Sdk/Sdk.targets" Condition="'$(_RemoraInSourceBuild)' == 'true'"/>
 
     <!-- Override packability -->
     <PropertyGroup>
