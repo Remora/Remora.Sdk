@@ -14,10 +14,11 @@
             <Using Namespace="System.IO"/>
             <Using Namespace="System.Text.RegularExpressions" />
             <Code Type="Fragment" Language="cs">
-                <![CDATA[  
-                  File.WriteAllText(
-                    OutputFilename,
-                    Regex.Replace(File.ReadAllText(InputFilename), MatchExpression, ReplacementText)
+                <![CDATA[
+                    File.WriteAllText
+                    (
+                        OutputFilename,
+                        Regex.Replace(File.ReadAllText(InputFilename), MatchExpression, ReplacementText)
                     );
                 ]]>
             </Code>
