@@ -31,7 +31,7 @@ jobs:
         run: dotnet test -c Release --no-restore --no-build --verbosity minimal
 
       - name: Package
-        if: matrix.platform == 'ubuntu-latest' && github.ref == 'refs/heads/master' && github.event_name == 'push'
+        if: matrix.platform == 'ubuntu-latest' && github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: dotnet pack -c Release --no-restore --no-build --version-suffix "github$GITHUB_RUN_ID"
       - uses: actions/upload-artifact@v3
         if: matrix.platform == 'ubuntu-latest'
