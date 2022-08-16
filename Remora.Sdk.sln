@@ -8,9 +8,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "metadata", "metadata", "{C2
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
-		nuget.config = nuget.config
 		.gitignore = .gitignore
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5B608803-1FBF-46B5-8AC5-30C5E0C6D7EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleProject", "Tests\ConsoleProject\ConsoleProject.csproj", "{41D83C63-CC5C-46BF-89C1-859C6064B5E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryProject", "Tests\LibraryProject\LibraryProject.csproj", "{7A29BD0A-C96F-4535-BBB6-0F847CB73F07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "Tests\TestProject\TestProject.csproj", "{57CE587F-9551-4100-B739-8955E5CC70D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{5C0A4341-F83C-4E63-8542-C23F829B10B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{2826F5AD-37CF-4670-A8B5-DAB00EE2DF49}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 	EndProjectSection
 EndProject
 Global
@@ -27,5 +41,24 @@ Global
 		{10815AC2-0F9B-4C06-9EA0-317A766B2A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10815AC2-0F9B-4C06-9EA0-317A766B2A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10815AC2-0F9B-4C06-9EA0-317A766B2A5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41D83C63-CC5C-46BF-89C1-859C6064B5E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41D83C63-CC5C-46BF-89C1-859C6064B5E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41D83C63-CC5C-46BF-89C1-859C6064B5E4}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{41D83C63-CC5C-46BF-89C1-859C6064B5E4}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{7A29BD0A-C96F-4535-BBB6-0F847CB73F07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A29BD0A-C96F-4535-BBB6-0F847CB73F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A29BD0A-C96F-4535-BBB6-0F847CB73F07}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A29BD0A-C96F-4535-BBB6-0F847CB73F07}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{57CE587F-9551-4100-B739-8955E5CC70D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57CE587F-9551-4100-B739-8955E5CC70D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57CE587F-9551-4100-B739-8955E5CC70D6}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{57CE587F-9551-4100-B739-8955E5CC70D6}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{41D83C63-CC5C-46BF-89C1-859C6064B5E4} = {5B608803-1FBF-46B5-8AC5-30C5E0C6D7EB}
+		{7A29BD0A-C96F-4535-BBB6-0F847CB73F07} = {5B608803-1FBF-46B5-8AC5-30C5E0C6D7EB}
+		{57CE587F-9551-4100-B739-8955E5CC70D6} = {5B608803-1FBF-46B5-8AC5-30C5E0C6D7EB}
+		{5C0A4341-F83C-4E63-8542-C23F829B10B6} = {C24DCE64-A955-4039-B930-93C219188BF7}
+		{2826F5AD-37CF-4670-A8B5-DAB00EE2DF49} = {5C0A4341-F83C-4E63-8542-C23F829B10B6}
 	EndGlobalSection
 EndGlobal
