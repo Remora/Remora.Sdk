@@ -38,6 +38,9 @@ jobs:
         with:
           name: nupkg
           path: nuget/*
+      - name: Setup tmate session
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
   prerelease:
     needs: build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
