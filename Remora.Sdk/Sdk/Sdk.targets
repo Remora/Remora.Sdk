@@ -149,7 +149,7 @@
         />
 
         <PropertyGroup>
-            <LicenseText>$([System.IO.File]::ReadAllText('$(LicenseTextFile)').Replace('%0a', '\n').Replace("/", "\/"))</LicenseText>
+            <LicenseText>$([System.IO.File]::ReadAllText('$(LicenseTextFile)').Replace('%0a', '\n').Replace('%0d', '').Replace("/", "\/"))</LicenseText>
         </PropertyGroup>
 
         <ReplaceFileText
@@ -176,8 +176,6 @@
         <CreateProperty Value="true">
             <Output TaskParameter="Value" PropertyName="HasGeneratedStylecopJson" />
         </CreateProperty>
-
-        <Message Importance="high" Text="Generated stylecop.json ($(MSBuildProjectFile))" />
     </Target>
 
     <ItemGroup>
