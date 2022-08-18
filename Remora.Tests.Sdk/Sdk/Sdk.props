@@ -1,5 +1,5 @@
 <Project>
-    <Import Project="Sdk.props" Sdk="Remora.Sdk" Version="1.0.0-preview8" Condition="'$(_RemoraInSourceBuild)' != 'true'"/>
+    <Import Project="Sdk.props" Sdk="Remora.Sdk" Version="1.0.0" Condition="'$(_RemoraInSourceBuild)' != 'true'"/>
     <Import Project="../../Remora.Sdk/Sdk/Sdk.props" Condition="'$(_RemoraInSourceBuild)' == 'true'"/>
 
     <!-- Override target frameworks -->
