@@ -7,7 +7,7 @@
     <PropertyGroup>
         <Title>Remora.Sdk</Title>
         <Description>Provides default properties and targets for Remora-style projects.</Description>
-        <VersionPrefix>1.1.0</VersionPrefix>
+        <VersionPrefix>1.1.1</VersionPrefix>
         <PackageReleaseNotes>
             Add MIT file header.
             Add support for SPDX file headers.
