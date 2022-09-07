@@ -168,6 +168,7 @@ The following properties are defined by the SDK.
 | LegalCopyrightHolder* | $(LegalAuthor)    | Yes         | Yes      |
 | LegalEmail*           |                   | Yes         | Yes      |
 | LicenseTextFile*      | (internal)        | Yes         | Yes      |
+| UseSPDXFileHeaders*   | false             | Yes         | No       |
 
 Of note is that `LegalLicense` defaults to LGPLv3 or later; this is the standard
 for Remora projects, but you may choose another license expression if required.
@@ -182,5 +183,10 @@ These properties come together to
   * Generate metadata for your NuGet packages
   * Generate a license header for your source code files
 
+Optionally, you may set `UseSPDXFileHeaders` if you don't want to use a 
+traditional license header. This creates a machine-readable file header 
+according to the [SPDX][2] specification and populates it with the required 
+metadata.
 
 [1]: Sdk/license-headers
+[2]: https://spdx.dev/
