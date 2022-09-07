@@ -1,0 +1,16 @@
+<Project>
+    <PropertyGroup>
+        <_RemoraInSourceBuild>true</_RemoraInSourceBuild>
+    </PropertyGroup>
+
+    <Import Project="../../Remora.Tests.Sdk/Sdk/Sdk.props" />
+
+    <PropertyGroup>
+        <LegalAuthor>Jarl Gullberg</LegalAuthor>
+        <LegalEmail>jarl.gullberg@gmail.com</LegalEmail>
+        <UseSPDXFileHeaders>true</UseSPDXFileHeaders>
+    </PropertyGroup>
+
+    <Import Project="../../Remora.Tests.Sdk/Sdk/Sdk.targets" />
+</Project>
+

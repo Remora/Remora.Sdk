@@ -122,6 +122,11 @@
         <CodeAnalysisRuleSet>$(StylecopRuleset)</CodeAnalysisRuleSet>
     </PropertyGroup>
 
+
+    <PropertyGroup Condition="'$(UseSPDXFileHeaders)' == 'true'">
+        <LicenseTextFile>$(MSBuildThisFileDirectory)/license-headers/SPDX</LicenseTextFile>
+    </PropertyGroup>
+
     <Target Name="GenerateStylecopJson" Condition="'$(HasGeneratedStylecopJson)' != 'true'" BeforeTargets="CompileDesignTime;Compile;PrepareForBuild;Restore">
         <PropertyGroup Condition="'$(LicenseTextFile)' == ''">
             <LicenseTextFile>$(MSBuildThisFileDirectory)/license-headers/$(LegalLicense)</LicenseTextFile>
@@ -172,6 +177,12 @@
                 OutputFilename="$(StylecopOutputPath)"
                 MatchExpression="__REMORA_COPYRIGHT_TEXT_MARKER"
                 ReplacementText="$(LicenseText)" />
+
+        <ReplaceFileText
+                InputFilename="$(StylecopOutputPath)"
+                OutputFilename="$(StylecopOutputPath)"
+                MatchExpression="__REMORA_LICENSE_EXPRESSION_MARKER"
+                ReplacementText="$(LegalLicense)" />
 
         <CreateProperty Value="true">
             <Output TaskParameter="Value" PropertyName="HasGeneratedStylecopJson" />

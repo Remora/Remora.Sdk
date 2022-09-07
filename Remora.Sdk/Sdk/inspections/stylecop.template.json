@@ -48,7 +48,8 @@
             "copyrightText" : "__REMORA_COPYRIGHT_TEXT_MARKER",
             "variables" : {
                 "licenseFile": "LICENSE",
-                "author" : "__REMORA_AUTHOR_MARKER <__REMORA_EMAIL_MARKER>"
+                "author" : "__REMORA_AUTHOR_MARKER <__REMORA_EMAIL_MARKER>",
+                "licenseExpression" : "__REMORA_LICENSE_EXPRESSION_MARKER"
             },
             "xmlHeader" : false,
             "documentInterfaces" : true,
