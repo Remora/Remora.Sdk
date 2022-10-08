@@ -7,7 +7,7 @@
     <PropertyGroup>
         <Title>Remora.Tests.Sdk</Title>
         <Description>Provides default properties and targets for Remora-style unit test projects.</Description>
-        <VersionPrefix>1.0.3</VersionPrefix>
+        <VersionPrefix>1.0.4</VersionPrefix>
         <PackageReleaseNotes>
             Update dependencies.
         </PackageReleaseNotes>
