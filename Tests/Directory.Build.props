@@ -2,7 +2,7 @@
     <PropertyGroup>
         <LegalAuthor>Jarl Gullberg</LegalAuthor>
         <LegalEmail>jarl.gullberg@gmail.com</LegalEmail>
-        <ExecutableFrameworks>net6.0;net7.0</ExecutableFrameworks>
+        <ExecutableFrameworks>net6.0</ExecutableFrameworks>
     </PropertyGroup>
 
     <PropertyGroup>
