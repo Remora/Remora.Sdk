@@ -47,12 +47,12 @@ The following properties are defined by the SDK.
 ### Framework Targets
 The following properties are defined by the SDK.
 
-| Property              | Value                 | Overridable |
-|-----------------------|-----------------------|-------------|
-| LibraryFrameworks*    | netstandard2.1;net6.0 | Yes         |
-| ExecutableFrameworks* | net6.0                | Yes         |
-| TargetFramework       |                       | Yes         |
-| TargetFrameworks      | (varies)              | Yes         |
+| Property              | Value                        | Overridable |
+|-----------------------|------------------------------|-------------|
+| LibraryFrameworks*    | netstandard2.1;net6.0;net7.0 | Yes         |
+| ExecutableFrameworks* | net7.0                       | Yes         |
+| TargetFramework       |                              | Yes         |
+| TargetFrameworks      | (varies)                     | Yes         |
 
 Notably, the SDK defines a set of standard targets for libraries and frameworks,
 then applies this to the `TargetFrameworks` property based on the project's 
@@ -74,7 +74,7 @@ The following packages are added by the SDK.
 | Package        | Purpose                                                     |
 |----------------|-------------------------------------------------------------|
 | Nullable       | Enables the usage of nullability annotations in all targets |
- | IsExternalInit | Enables the usage of records in all targets                 |
+| IsExternalInit | Enables the usage of records in all targets                 |
 
 ### Code Analysis
 The following properties are defined by the SDK.
