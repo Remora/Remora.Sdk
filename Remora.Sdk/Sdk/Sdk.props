@@ -3,8 +3,8 @@
 
     <!-- Default targeting configuration -->
     <PropertyGroup>
-        <LibraryFrameworks Condition="'$(LibraryFrameworks)' == ''">netstandard2.1;net6.0</LibraryFrameworks>
-        <ExecutableFrameworks Condition="'$(ExecutableFrameworks)' == ''">net6.0</ExecutableFrameworks>
+        <LibraryFrameworks Condition="'$(LibraryFrameworks)' == ''">netstandard2.1;net6.0;net7.0</LibraryFrameworks>
+        <ExecutableFrameworks Condition="'$(ExecutableFrameworks)' == ''">net7.0</ExecutableFrameworks>
     </PropertyGroup>
 
     <!-- Default common properties -->
