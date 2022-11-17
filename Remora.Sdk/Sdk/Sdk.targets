@@ -163,48 +163,29 @@
             <_StylecopTemplate>$([System.IO.File]::ReadAllText('$(StylecopTemplatePath)'))</_StylecopTemplate>
         </PropertyGroup>
 
-        <ReplaceText
-                InputText="$(_StylecopTemplate)"
-                MatchExpression="__REMORA_COPYRIGHT_HOLDER_MARKER"
-                ReplacementText="$(LegalCopyrightHolder)">
-            <Output TaskParameter="OutputText" PropertyName="_StylecopTemplate" />
-        </ReplaceText>
+        <ItemGroup>
+            <_RemoraStylecopTokens Include="__REMORA_COPYRIGHT_HOLDER_MARKER">
+                <Value>$(LegalCopyrightHolder)</Value>
+            </_RemoraStylecopTokens>
+            <_RemoraStylecopTokens Include="__REMORA_AUTHOR_MARKER">
+                <Value>$(LegalAuthor)</Value>
+            </_RemoraStylecopTokens>
+            <_RemoraStylecopTokens Include="__REMORA_EMAIL_MARKER">
+                <Value>$(LegalEmail)</Value>
+            </_RemoraStylecopTokens>
+            <_RemoraStylecopTokens Include="__REMORA_COPYRIGHT_TEXT_MARKER">
+                <Value>$(LicenseText)</Value>
+            </_RemoraStylecopTokens>
+            <_RemoraStylecopTokens Include="__REMORA_LICENSE_EXPRESSION_MARKER">
+                <Value>$(LegalLicense)</Value>
+            </_RemoraStylecopTokens>
+        </ItemGroup>
 
-        <ReplaceText
-                InputText="$(_StylecopTemplate)"
-                MatchExpression="__REMORA_AUTHOR_MARKER"
-                ReplacementText="$(LegalAuthor)">
-            <Output TaskParameter="OutputText" PropertyName="_StylecopTemplate" />
-        </ReplaceText>
-
-        <ReplaceText
-                InputText="$(_StylecopTemplate)"
-                MatchExpression="__REMORA_EMAIL_MARKER"
-                ReplacementText="$(LegalEmail)">
-            <Output TaskParameter="OutputText" PropertyName="_StylecopTemplate" />
-        </ReplaceText>
-
-        <ReplaceText
-                InputText="$(_StylecopTemplate)"
-                MatchExpression="__REMORA_COPYRIGHT_TEXT_MARKER"
-                ReplacementText="$(LicenseText)">
-            <Output TaskParameter="OutputText" PropertyName="_StylecopTemplate" />
-        </ReplaceText>
-
-        <ReplaceText
-                InputText="$(_StylecopTemplate)"
-                MatchExpression="__REMORA_LICENSE_EXPRESSION_MARKER"
-                ReplacementText="$(LegalLicense)">
-            <Output TaskParameter="OutputText" PropertyName="_StylecopTemplate" />
-        </ReplaceText>
-
-        <WriteLinesToFile
-                File="$(StylecopOutputPath)"
-                Lines="$(_StylecopTemplate)"
-                Overwrite="true"
-                WriteOnlyWhenDifferent="true" />
-
-        <Message Text="Generated stylecop.json" />
+        <ApplyTemplate
+                        InputFile="$(StylecopTemplatePath)"
+                        OutputFile="$(StylecopOutputPath)"
+                        Tokens="@(_RemoraStylecopTokens)"
+        />
         
         <CreateProperty Value="true">
             <Output TaskParameter="Value" PropertyName="HasGeneratedStylecopJson" />
