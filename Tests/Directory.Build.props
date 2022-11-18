@@ -1,0 +1,16 @@
+<Project>
+    <PropertyGroup>
+        <LegalAuthor>Jarl Gullberg</LegalAuthor>
+        <LegalEmail>jarl.gullberg@gmail.com</LegalEmail>
+        <ExecutableFrameworks>net6.0</ExecutableFrameworks>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <RepositoryUrl>https://github.com/Remora/Remora.Sdk</RepositoryUrl>
+        <RepositoryBranch>main</RepositoryBranch>
+
+        <PackageOutputPath>$(MSBuildThisFileDirectory)..\nuget</PackageOutputPath>
+        <PackageProjectUrl>https://github.com/Remora/Remora.Sdk</PackageProjectUrl>
+        <PackageTags>remora;sdk;sample</PackageTags>
+    </PropertyGroup>
+</Project>

@@ -1,15 +1,17 @@
 <Project>
-    <!-- Fallback targeting properties -->
-    <PropertyGroup Condition="'$(TargetFramework)' == '' And '$(TargetFrameworks)' == ''">
+    <Import Project="Sdk.tasks"/>
+    
+    <!--
+        Fallback targeting properties - VS sets for DesignTime builds only TargetFramework
+        but requires information about all TargetFrameworks
+    -->
+    <PropertyGroup Condition="'$(TargetFrameworks)' == ''">
         <!--suppress MsbuildTargetFrameworkTagInspection -->
         <TargetFrameworks>$(LibraryFrameworks)</TargetFrameworks>
 
         <!--suppress MsbuildTargetFrameworkTagInspection -->
         <TargetFrameworks Condition="'$(OutputType)' == 'Exe'">$(ExecutableFrameworks)</TargetFrameworks>
     </PropertyGroup>
-
-    <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-    <Import Project="Sdk.tasks"/>
 
     <!-- Forced common properties -->
     <PropertyGroup>
@@ -70,17 +72,17 @@
     </ItemGroup>
 
     <!-- SourceLink -->
-    <ItemGroup Condition="$(IsPackable)">
+    <ItemGroup Condition="'$(IsPackable)' == 'true'">
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
     </ItemGroup>
 
     <!-- NuGet Icon -->
-    <PropertyGroup Condition="$(IsPackable) And Exists('$(PackageIconPath)')">
+    <PropertyGroup Condition="'$(IsPackable)' == 'true' And Exists('$(PackageIconPath)')">
         <IconName>$([System.IO.Path]::GetFileName('$(PackageIconPath)'))</IconName>
         <PackageIcon>$(IconName)</PackageIcon>
     </PropertyGroup>
 
-    <ItemGroup Condition="$(IsPackable) And Exists('$(PackageIconPath)')">
+    <ItemGroup Condition="'$(IsPackable)' == 'true' And Exists('$(PackageIconPath)')">
         <None Include="$(PackageIconPath)" Pack="true" PackagePath="/">
             <Link>$(IconName)</Link>
             <InProject>false</InProject>
@@ -88,7 +90,7 @@
     </ItemGroup>
 
     <!-- NuGet README -->
-    <ItemGroup Condition="$(IsPackable)">
+    <ItemGroup Condition="'$(IsPackable)' == 'true'">
         <None Include="$(MSBuildProjectDirectory)/README.md" Pack="true" PackagePath="/">
             <Link>README.md</Link>
         </None>
@@ -100,7 +102,7 @@
     </ItemGroup>
 
     <!-- Status checks -->
-    <Target Name="RemoraPackablePropertyChecks" Condition="$(IsPackable)" BeforeTargets="Pack">
+    <Target Name="RemoraPackablePropertyChecks" Condition="'$(IsPackable)' == 'true'" BeforeTargets="Pack">
         <Warning
                 Condition="'$(PackageTags)' == ''"
                 Text="PackageTags is not set; consider setting it for better package discoverability."
@@ -157,33 +159,34 @@
             <LicenseText>$([System.IO.File]::ReadAllText('$(LicenseTextFile)').Replace('%0a', '\n').Replace('%0d', '').Replace("/", "\/"))</LicenseText>
         </PropertyGroup>
 
-        <ReplaceFileText
-                InputFilename="$(StylecopTemplatePath)"
-                OutputFilename="$(StylecopOutputPath)"
-                MatchExpression="__REMORA_COPYRIGHT_HOLDER_MARKER"
-                ReplacementText="$(LegalCopyrightHolder)" />
-        <ReplaceFileText
-                InputFilename="$(StylecopOutputPath)"
-                OutputFilename="$(StylecopOutputPath)"
-                MatchExpression="__REMORA_AUTHOR_MARKER"
-                ReplacementText="$(LegalAuthor)" />
-        <ReplaceFileText
-                InputFilename="$(StylecopOutputPath)"
-                OutputFilename="$(StylecopOutputPath)"
-                MatchExpression="__REMORA_EMAIL_MARKER"
-                ReplacementText="$(LegalEmail)" />
-        <ReplaceFileText
-                InputFilename="$(StylecopOutputPath)"
-                OutputFilename="$(StylecopOutputPath)"
-                MatchExpression="__REMORA_COPYRIGHT_TEXT_MARKER"
-                ReplacementText="$(LicenseText)" />
+        <PropertyGroup>
+            <_StylecopTemplate>$([System.IO.File]::ReadAllText('$(StylecopTemplatePath)'))</_StylecopTemplate>
+        </PropertyGroup>
 
-        <ReplaceFileText
-                InputFilename="$(StylecopOutputPath)"
-                OutputFilename="$(StylecopOutputPath)"
-                MatchExpression="__REMORA_LICENSE_EXPRESSION_MARKER"
-                ReplacementText="$(LegalLicense)" />
+        <ItemGroup>
+            <_RemoraStylecopTokens Include="__REMORA_COPYRIGHT_HOLDER_MARKER">
+                <Value>$(LegalCopyrightHolder)</Value>
+            </_RemoraStylecopTokens>
+            <_RemoraStylecopTokens Include="__REMORA_AUTHOR_MARKER">
+                <Value>$(LegalAuthor)</Value>
+            </_RemoraStylecopTokens>
+            <_RemoraStylecopTokens Include="__REMORA_EMAIL_MARKER">
+                <Value>$(LegalEmail)</Value>
+            </_RemoraStylecopTokens>
+            <_RemoraStylecopTokens Include="__REMORA_COPYRIGHT_TEXT_MARKER">
+                <Value>$(LicenseText)</Value>
+            </_RemoraStylecopTokens>
+            <_RemoraStylecopTokens Include="__REMORA_LICENSE_EXPRESSION_MARKER">
+                <Value>$(LegalLicense)</Value>
+            </_RemoraStylecopTokens>
+        </ItemGroup>
 
+        <ApplyTemplate
+                        InputFile="$(StylecopTemplatePath)"
+                        OutputFile="$(StylecopOutputPath)"
+                        Tokens="@(_RemoraStylecopTokens)"
+        />
+        
         <CreateProperty Value="true">
             <Output TaskParameter="Value" PropertyName="HasGeneratedStylecopJson" />
         </CreateProperty>
@@ -199,4 +202,7 @@
             <InProject>false</InProject>
         </AdditionalFiles>
     </ItemGroup>
+
+    <!-- Import at last to respect set properties -->
+    <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
 </Project>
