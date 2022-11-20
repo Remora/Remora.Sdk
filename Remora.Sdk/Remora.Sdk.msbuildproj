@@ -7,10 +7,10 @@
     <PropertyGroup>
         <Title>Remora.Sdk</Title>
         <Description>Provides default properties and targets for Remora-style projects.</Description>
-        <VersionPrefix>1.1.1</VersionPrefix>
+        <VersionPrefix>2.0.0</VersionPrefix>
         <PackageReleaseNotes>
-            Add MIT file header.
-            Add support for SPDX file headers.
+            Add .NET 7 to the default library targets.
+            Replace .NET 6 with .NET 7 for the default executable target.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
         <PackageTags>MSBuild;MSBuildSdk;Remora</PackageTags>
