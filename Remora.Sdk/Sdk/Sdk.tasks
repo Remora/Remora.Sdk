@@ -1,13 +1,13 @@
 <Project>
     <UsingTask
-            TaskName="ReplaceFileText"
+            TaskName="ApplyTemplate"
             TaskFactory="RoslynCodeTaskFactory"
             AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
         <ParameterGroup>
-            <InputFilename ParameterType="System.String" Required="true" />
-            <OutputFilename ParameterType="System.String" Required="true" />
-            <MatchExpression ParameterType="System.String" Required="true" />
-            <ReplacementText ParameterType="System.String" Required="true" />
+            <InputFile ParameterType="System.String" Required="true" />
+            <OutputFile ParameterType="System.String" Required="true" />
+            <Tokens ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+            <Debug ParameterType="System.Boolean" />
         </ParameterGroup>
         <Task>
             <Using Namespace="System"/>
@@ -15,11 +15,36 @@
             <Using Namespace="System.Text.RegularExpressions" />
             <Code Type="Fragment" Language="cs">
                 <![CDATA[
-                    File.WriteAllText
-                    (
-                        OutputFilename,
-                        Regex.Replace(File.ReadAllText(InputFilename), MatchExpression, ReplacementText)
-                    );
+                    var content = File.ReadAllText(InputFile);
+
+                    foreach (var token in Tokens) {
+                        var key = token.ItemSpec;
+                        var value = token.GetMetadata("Value");
+
+                        content = Regex.Replace(content, key, value);
+
+                        if (Debug) {
+                            Log.LogMessage(MessageImportance.High, key + " => " + value);
+                        }
+                    }
+
+                    var directoryPath = Path.GetDirectoryName(OutputFile);
+                    Directory.CreateDirectory(directoryPath);
+                    if (File.Exists(OutputFile)) {
+                        var existingContent = File.ReadAllText(OutputFile);
+                        if (existingContent == content) {
+                            if (Debug) {
+                                Log.LogMessage(MessageImportance.High, "File was not written, as the content would not have changed!");
+                            }
+                            return Success;
+                        }
+                    }
+
+                    File.WriteAllText(OutputFile, content);
+
+                    if (Debug) {
+                        Log.LogMessage(MessageImportance.High, "File was written");
+                    }
                 ]]>
             </Code>
         </Task>
