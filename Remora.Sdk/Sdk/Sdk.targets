@@ -1,6 +1,6 @@
 <Project>
     <Import Project="Sdk.tasks"/>
-    
+
     <!--
         Fallback targeting properties - VS sets for DesignTime builds only TargetFramework
         but requires information about all TargetFrameworks
@@ -186,7 +186,7 @@
                         OutputFile="$(StylecopOutputPath)"
                         Tokens="@(_RemoraStylecopTokens)"
         />
-        
+
         <CreateProperty Value="true">
             <Output TaskParameter="Value" PropertyName="HasGeneratedStylecopJson" />
         </CreateProperty>
