@@ -25,6 +25,6 @@
     </ItemGroup>
 
     <!-- Import at last to respect set properties -->
-    <Import Project="Sdk.targets" Sdk="Remora.Sdk" Version="1.1.1" Condition="'$(_RemoraInSourceBuild)' != 'true'"/>
+    <Import Project="Sdk.targets" Sdk="Remora.Sdk" Version="2.0.1" Condition="'$(_RemoraInSourceBuild)' != 'true'"/>
     <Import Project="../../Remora.Sdk/Sdk/Sdk.targets" Condition="'$(_RemoraInSourceBuild)' == 'true'"/>
 </Project>
