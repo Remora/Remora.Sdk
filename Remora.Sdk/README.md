@@ -135,7 +135,8 @@ The following properties are defined by the SDK.
 | PackageLicenseExpression        | $(LegalLicense)                        | No          |
 | PackageIcon                     | (filename of PackageIconPath)          | No          |
 
-The following properties are not defined, but cause a compilation warning if left empty or unset.
+The following properties are not defined, but cause a compilation warning if 
+left empty or unset.
 
 | Property          | 
 |-------------------|
@@ -188,5 +189,21 @@ traditional license header. This creates a machine-readable file header
 according to the [SPDX][2] specification and populates it with the required 
 metadata.
 
+### Centrally Managed Package Versions
+Remora.Sdk supports [central package management][3] through MSBuild and NuGet's
+usual mechanisms with a `Directory.Packages.props` file. If you set 
+`ManagePackageVersionsCentrally` to `true`, Remora.Sdk will detect this and 
+switch over to also using centrally managed versions for its internal 
+mechanisms.
+
+This means that, in addition to letting you control your own dependencies 
+centrally, Remora.Sdk will also respect your pinned versions the packages it 
+brings dependencies on.
+
+Your `Directory.Packages.props` is always imported after Remora.Sdk's version
+pins, meaning you can either use `Update` or `Include` to override its settings.
+The preferred way is with an `Update` item.
+
 [1]: Sdk/license-headers
 [2]: https://spdx.dev/
+[3]: https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management
