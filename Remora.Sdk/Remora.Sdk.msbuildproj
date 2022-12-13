@@ -7,11 +7,9 @@
     <PropertyGroup>
         <Title>Remora.Sdk</Title>
         <Description>Provides default properties and targets for Remora-style projects.</Description>
-        <VersionPrefix>2.0.1</VersionPrefix>
+        <VersionPrefix>2.1.0</VersionPrefix>
         <PackageReleaseNotes>
-            Add .NET 7 to the default library targets.
-            Replace .NET 6 with .NET 7 for the default executable target.
-            Update nuget dependencies.
+            Support centrally managed package versions.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
         <PackageTags>MSBuild;MSBuildSdk;Remora</PackageTags>
