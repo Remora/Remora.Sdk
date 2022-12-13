@@ -1,0 +1,12 @@
+<Project>
+
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Override a default version -->
+        <PackageVersion Include="JetBrains.Annotations" Version="2022.1.0" />
+    </ItemGroup>
+
+</Project>

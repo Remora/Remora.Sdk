@@ -1,0 +1,14 @@
+<Project>
+    <Import Project="../../Remora.Sdk/Sdk/Sdk.props" />
+
+    <PropertyGroup>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <LegalAuthor>Jarl Gullberg</LegalAuthor>
+        <LegalEmail>jarl.gullberg@gmail.com</LegalEmail>
+    </PropertyGroup>
+
+    <Import Project="../../Remora.Sdk/Sdk/Sdk.targets" />
+</Project>

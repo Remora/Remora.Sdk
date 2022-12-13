@@ -1,4 +1,7 @@
 <Project>
+    <!-- Defaults for centrally managed package versions -->
+    <Import Project="Sdk.Packages.props" />
+
     <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
     <!-- Default targeting configuration -->
@@ -76,4 +79,5 @@
     <PropertyGroup>
         <ExcludeNonRunnableFrameworksFromCoverage Condition="'$(ExcludeNonRunnableFrameworksFromCoverage)' == ''">true</ExcludeNonRunnableFrameworksFromCoverage>
     </PropertyGroup>
+
 </Project>

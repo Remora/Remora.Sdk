@@ -9,20 +9,35 @@
         <AssemblyAttribute Condition="'$(TargetFramework)' != 'netstandard2.0'" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
-        <PackageReference Include="xunit" Version="2.4.2" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
-        <PackageReference Include="xunit.runner.console" Version="2.4.2" />
-        <PackageReference Include="coverlet.collector" Version="3.2.0">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="xunit.analyzers" Version="1.0.0" PrivateAssets="all"/>
-    </ItemGroup>
+    <!-- Default packages -->
+    <Choose>
+        <When Condition="'$(ManagePackageVersionsCentrally)' == true">
+            <ItemGroup>
+                <PackageReference Include="Microsoft.NET.Test.Sdk" />
+                <PackageReference Include="xunit" />
+                <PackageReference Include="xunit.runner.visualstudio" />
+                <PackageReference Include="xunit.runner.console" />
+                <PackageReference Include="coverlet.collector">
+                    <PrivateAssets>all</PrivateAssets>
+                    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+                </PackageReference>
+                <PackageReference Include="xunit.analyzers" PrivateAssets="all"/>
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <ItemGroup>
+                <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
+                <PackageReference Include="xunit" Version="2.4.2" />
+                <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
+                <PackageReference Include="xunit.runner.console" Version="2.4.2" />
+                <PackageReference Include="coverlet.collector" Version="3.2.0">
+                    <PrivateAssets>all</PrivateAssets>
+                    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+                </PackageReference>
+                <PackageReference Include="xunit.analyzers" Version="1.0.0" PrivateAssets="all"/>
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
 
     <!-- Import at last to respect set properties -->
     <Import Project="Sdk.targets" Sdk="Remora.Sdk" Version="2.0.1" Condition="'$(_RemoraInSourceBuild)' != 'true'"/>
