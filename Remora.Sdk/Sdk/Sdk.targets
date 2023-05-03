@@ -209,6 +209,6 @@
         </AdditionalFiles>
     </ItemGroup>
 
-    <!-- Import at last to respect set properties -->
-    <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+    <!-- Import last to respect set properties -->
+    <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" Condition="'$(RemoraSdkImportsMicrosoftSdk)' == 'true'" />
 </Project>

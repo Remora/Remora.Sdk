@@ -2,7 +2,11 @@
     <!-- Defaults for centrally managed package versions -->
     <Import Project="Sdk.Packages.props" />
 
-    <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+    <PropertyGroup Condition="'$(UsingMicrosoftNETSdk)' != 'true'">
+        <RemoraSdkImportsMicrosoftSdk>true</RemoraSdkImportsMicrosoftSdk>
+    </PropertyGroup>
+
+    <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" Condition="'$(RemoraSdkImportsMicrosoftSdk)' == 'true'" />
 
     <!-- Default targeting configuration -->
     <PropertyGroup>
