@@ -32,6 +32,11 @@
     <PropertyGroup Condition="'$(IncludeBuildOutput)' == ''">
         <IncludeBuildOutput>true</IncludeBuildOutput>
     </PropertyGroup>
+    
+    <!-- Version Properties -->
+    <PropertyGroup Condition="'$(VersionPrefix)' == ''">
+        <VersionPrefix>$(ProjectVersion)</VersionPrefix>
+    </PropertyGroup>
 
     <!-- Forced nuget properties -->
     <PropertyGroup>
