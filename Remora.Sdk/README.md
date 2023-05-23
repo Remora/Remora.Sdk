@@ -121,7 +121,7 @@ The following properties are defined by the SDK.
 |---------------------------------|----------------------------------------|-------------|
 | IsPackable                      | true                                   | Yes         |
 | Title                           | $(AssemblyName)                        | Yes         |
-| Authors                         | $(LegalAuthors)                        | Yes         |
+| Authors                         | $(LegalAuthor)                         | Yes         |
 | PackageIconPath*                | (internal)                             | Yes         |
 | PackageRequireLicenseAcceptance | true                                   | Yes         |
 | Copyright                       | $(LegalCopyrightHolder) <current year> | No          |
