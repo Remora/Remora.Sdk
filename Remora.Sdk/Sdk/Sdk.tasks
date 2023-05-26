@@ -29,9 +29,20 @@
                     }
 
                     var directoryPath = Path.GetDirectoryName(OutputFile);
+                    var filename = Path.GetFileName(OutputFile);
+
+                    // .NET Framework targets on Linux can choke on this, so this workaround will have to do. "obj\", in
+                    // particular, can be created as a full directory name in some configurations.
+                    if (Path.DirectorySeparatorChar == '/')
+                    {
+                        directoryPath = directoryPath.Replace('\\', '/');
+                    }
+
                     Directory.CreateDirectory(directoryPath);
-                    if (File.Exists(OutputFile)) {
-                        var existingContent = File.ReadAllText(OutputFile);
+
+                    var reformedPath = Path.Combine(directoryPath, filename);
+                    if (File.Exists(reformedPath)) {
+                        var existingContent = File.ReadAllText(reformedPath);
                         if (existingContent == content) {
                             if (Debug) {
                                 Log.LogMessage(MessageImportance.High, "File was not written, as the content would not have changed!");
@@ -40,7 +51,7 @@
                         }
                     }
 
-                    File.WriteAllText(OutputFile, content);
+                    File.WriteAllText(reformedPath, content);
 
                     if (Debug) {
                         Log.LogMessage(MessageImportance.High, "File was written");
