@@ -7,9 +7,10 @@
     <PropertyGroup>
         <Title>Remora.Sdk</Title>
         <Description>Provides default properties and targets for Remora-style projects.</Description>
-        <VersionPrefix>2.1.0</VersionPrefix>
+        <VersionPrefix>2.1.1</VersionPrefix>
         <PackageReleaseNotes>
-            Support centrally managed package versions.
+            Update nuget packages.
+            Ensure paths are clean on Linux.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
         <PackageTags>MSBuild;MSBuildSdk;Remora</PackageTags>
