@@ -1,0 +1,18 @@
+<Project>
+    <PropertyGroup>
+        <_RemoraInSourceBuild>true</_RemoraInSourceBuild>
+    </PropertyGroup>
+
+    <Import Project="../../Remora.Tests.Sdk/Sdk/Sdk.props" />
+
+    <PropertyGroup>
+        <LegalAuthor>Jarl Gullberg</LegalAuthor>
+        <LegalEmail>jarl.gullberg@gmail.com</LegalEmail>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <LibraryFrameworks>net462</LibraryFrameworks>
+    </PropertyGroup>
+
+    <Import Project="../../Remora.Tests.Sdk/Sdk/Sdk.targets" />
+</Project>

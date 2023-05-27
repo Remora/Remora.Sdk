@@ -4,9 +4,62 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
+    <!-- Useful target information -->
+    <Choose>
+        <!-- Check for net461 and similar TFMs -->
+        <When Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+            <PropertyGroup>
+                <IsNET>false</IsNET>
+                <IsNETCore>false</IsNETCore>
+                <IsNETStandard>false</IsNETStandard>
+                <IsNETFramework>true</IsNETFramework>
+                <IsRunnableTarget>true</IsRunnableTarget>
+            </PropertyGroup>
+        </When>
+        <!-- Check for net5.0 and similar TFMs -->
+        <When Condition="'$(TargetFramework.TrimEnd(`0123456789.`))' == 'net'">
+            <PropertyGroup>
+                <IsNET>true</IsNET>
+                <IsNETCore>false</IsNETCore>
+                <IsNETStandard>false</IsNETStandard>
+                <IsNETFramework>false</IsNETFramework>
+                <IsRunnableTarget>true</IsRunnableTarget>
+            </PropertyGroup>
+        </When>
+        <!-- Check for netcoreapp3.0 and similar TFMs -->
+        <When Condition="'$(TargetFramework.TrimEnd(`0123456789.`))' == 'netcoreapp'">
+            <PropertyGroup>
+                <IsNET>false</IsNET>
+                <IsNETCore>true</IsNETCore>
+                <IsNETStandard>false</IsNETStandard>
+                <IsNETFramework>false</IsNETFramework>
+                <IsRunnableTarget>true</IsRunnableTarget>
+            </PropertyGroup>
+        </When>
+        <!-- Check for netstandard2.0 and similar TFMs -->
+        <When Condition="'$(TargetFramework.TrimEnd(`0123456789.`))' == 'netstandard'">
+            <PropertyGroup>
+                <IsNET>false</IsNET>
+                <IsNETCore>false</IsNETCore>
+                <IsNETStandard>true</IsNETStandard>
+                <IsNETFramework>false</IsNETFramework>
+                <IsRunnableTarget>false</IsRunnableTarget>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <IsNET>false</IsNET>
+                <IsNETCore>false</IsNETCore>
+                <IsNETStandard>false</IsNETStandard>
+                <IsNETFramework>false</IsNETFramework>
+                <IsRunnableTarget>false</IsRunnableTarget>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
     <!-- Suppress code coverage if requested -->
     <ItemGroup Condition="'$(ExcludeTestsFromCoverage)' == 'true'">
-        <AssemblyAttribute Condition="'$(TargetFramework)' != 'netstandard2.0'" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
+        <AssemblyAttribute Condition="$(IsNET) Or $(IsNETCore) Or '$(TargetFramework)' == 'netstandard2.1'" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
     </ItemGroup>
 
     <!-- Default packages -->
