@@ -108,6 +108,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <!-- Normalize problematic properties -->
+    <PropertyGroup>
+        <WarningsAsErrors>$(WarningsAsErrors.Replace("%0a", "").Replace("%0d", "").Replace(" ", ""))</WarningsAsErrors>
+        <NoWarn>$(NoWarn.Replace("%0a", "").Replace("%0d", "").Replace(" ", ""))</NoWarn>
+    </PropertyGroup>
+
     <!-- Default packages -->
     <Choose>
         <When Condition="'$(ManagePackageVersionsCentrally)' == true">
