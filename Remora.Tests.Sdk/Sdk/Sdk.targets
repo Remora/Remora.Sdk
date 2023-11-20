@@ -79,20 +79,20 @@
         </When>
         <Otherwise>
             <ItemGroup>
-                <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
-                <PackageReference Include="xunit" Version="2.4.2" />
-                <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
-                <PackageReference Include="xunit.runner.console" Version="2.4.2" />
+                <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+                <PackageReference Include="xunit" Version="2.6.2" />
+                <PackageReference Include="xunit.runner.visualstudio" Version="2.5.4" />
+                <PackageReference Include="xunit.runner.console" Version="2.6.2" />
                 <PackageReference Include="coverlet.collector" Version="6.0.0">
                     <PrivateAssets>all</PrivateAssets>
                     <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
                 </PackageReference>
-                <PackageReference Include="xunit.analyzers" Version="1.1.0" PrivateAssets="all"/>
+                <PackageReference Include="xunit.analyzers" Version="1.6.0" PrivateAssets="all"/>
             </ItemGroup>
         </Otherwise>
     </Choose>
 
     <!-- Import at last to respect set properties -->
-    <Import Project="Sdk.targets" Sdk="Remora.Sdk" Version="2.1.2" Condition="'$(_RemoraInSourceBuild)' != 'true'"/>
+    <Import Project="Sdk.targets" Sdk="Remora.Sdk" Version="3.0.0" Condition="'$(_RemoraInSourceBuild)' != 'true'"/>
     <Import Project="../../Remora.Sdk/Sdk/Sdk.targets" Condition="'$(_RemoraInSourceBuild)' == 'true'"/>
 </Project>
