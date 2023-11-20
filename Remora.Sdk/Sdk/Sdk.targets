@@ -184,7 +184,7 @@
     <PropertyGroup>
         <StylecopRuleset>$(MSBuildThisFileDirectory)/inspections/stylecop.ruleset</StylecopRuleset>
         <StylecopTemplatePath>$(MSBuildThisFileDirectory)/inspections/stylecop.template.json</StylecopTemplatePath>
-        <StylecopOutputPath>$(BaseIntermediateOutputPath)/stylecop.json</StylecopOutputPath>
+        <StylecopOutputPath>$(BaseIntermediateOutputPath)/$(Configuration)/$(TargetFramework)/stylecop.json</StylecopOutputPath>
     </PropertyGroup>
 
     <PropertyGroup>
