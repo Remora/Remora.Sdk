@@ -11,6 +11,9 @@
 
         <!--suppress MsbuildTargetFrameworkTagInspection -->
         <TargetFrameworks Condition="'$(OutputType)' == 'Exe'">$(ExecutableFrameworks)</TargetFrameworks>
+
+        <!--suppress MsbuildTargetFrameworkTagInspection -->
+        <TargetFrameworks Condition="'$(TargetNetStandard)' == true">netstandard2.1;$(TargetFrameworks)</TargetFrameworks>
     </PropertyGroup>
 
     <!-- Useful target information -->
