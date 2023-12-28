@@ -11,7 +11,8 @@
     <!-- Default targeting configuration -->
     <PropertyGroup>
         <ExecutableFrameworks Condition="'$(ExecutableFrameworks)' == ''">net8.0</ExecutableFrameworks>
-        <LibraryFrameworks Condition="'$(LibraryFrameworks)' == ''">netstandard2.1;net6.0;net7.0;$(ExecutableFrameworks)</LibraryFrameworks>
+        <LibraryFrameworks Condition="'$(LibraryFrameworks)' == ''">net6.0;net7.0;$(ExecutableFrameworks)</LibraryFrameworks>
+        <TargetNetStandard Condition="'$(TargetNetStandard)' == ''">true</TargetNetStandard>
     </PropertyGroup>
 
     <!-- Default common properties -->
