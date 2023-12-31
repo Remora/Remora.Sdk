@@ -55,8 +55,8 @@ The following properties are defined by the SDK.
 | TargetFrameworks      | (varies)      | Yes         |
 | TargetNetStandard     | true          | Yes         |
 
-If `TargetNetStandard` is `true`, `netstandard2.1;` will be prepended to
-LibraryFrameworks: `netstandard2.1;net6.0;net7.0`.
+If `TargetNetStandard` is `true`, `netstandard2.1` will be included as a target when building libraries.
+Set the property to `false` if this is undesirable.
 
 Notably, the SDK defines a set of standard targets for libraries and frameworks,
 then applies this to the `TargetFrameworks` property based on the project's 

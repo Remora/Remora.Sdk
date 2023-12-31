@@ -10,10 +10,10 @@
         <TargetFrameworks>$(LibraryFrameworks)</TargetFrameworks>
 
         <!--suppress MsbuildTargetFrameworkTagInspection -->
-        <TargetFrameworks Condition="'$(OutputType)' == 'Exe'">$(ExecutableFrameworks)</TargetFrameworks>
+        <TargetFrameworks Condition="'$(TargetNetStandard)' == true">netstandard2.1;$(LibraryFrameworks)</TargetFrameworks>
 
         <!--suppress MsbuildTargetFrameworkTagInspection -->
-        <TargetFrameworks Condition="'$(TargetNetStandard)' == true">netstandard2.1;$(TargetFrameworks)</TargetFrameworks>
+        <TargetFrameworks Condition="'$(OutputType)' == 'Exe'">$(ExecutableFrameworks)</TargetFrameworks>
     </PropertyGroup>
 
     <!-- Useful target information -->
