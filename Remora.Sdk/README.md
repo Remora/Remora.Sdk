@@ -47,16 +47,16 @@ The following properties are defined by the SDK.
 ### Framework Targets
 The following properties are defined by the SDK.
 
-| Property              | Value         | Overridable |
-|-----------------------|---------------|-------------|
-| LibraryFrameworks*    | net6.0;net7.0 | Yes         |
-| ExecutableFrameworks* | net7.0        | Yes         |
-| TargetFramework       |               | Yes         |
-| TargetFrameworks      | (varies)      | Yes         |
-| TargetNetStandard     | true          | Yes         |
+| Property               | Value                | Overridable |
+|------------------------|----------------------|-------------|
+| LibraryFrameworks*     | net6.0;net7.0;net8.0 | Yes         |
+| ExecutableFrameworks*  | net8.0               | Yes         |
+| NetStandardFrameworks* | netstandard2.1       | Yes         |
+| TargetFrameworks       | (varies)             | Yes         |
+| TargetNetStandard*     | true                 | Yes         |
 
-If `TargetNetStandard` is `true`, `netstandard2.1` will be included as a target when building libraries.
-Set the property to `false` if this is undesirable.
+If `TargetNetStandard` is `true`, `netstandard2.1` will be included as a target 
+when building libraries. Set the property to `false` if this is undesirable.
 
 Notably, the SDK defines a set of standard targets for libraries and frameworks,
 then applies this to the `TargetFrameworks` property based on the project's 
