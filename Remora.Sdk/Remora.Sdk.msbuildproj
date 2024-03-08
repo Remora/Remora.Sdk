@@ -7,10 +7,9 @@
     <PropertyGroup>
         <Title>Remora.Sdk</Title>
         <Description>Provides default properties and targets for Remora-style projects.</Description>
-        <VersionPrefix>3.0.1</VersionPrefix>
+        <VersionPrefix>3.1.0</VersionPrefix>
         <PackageReleaseNotes>
-            Update nuget packages.
-            Ensure paths are clean on Linux.
+            Add TargetNetStandard option to give users a smoother way to opt out of .NET Standard targeting.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
         <PackageTags>MSBuild;MSBuildSdk;Remora</PackageTags>
