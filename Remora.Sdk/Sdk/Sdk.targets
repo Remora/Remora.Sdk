@@ -166,9 +166,11 @@
     </ItemGroup>
 
     <!-- Code coverage -->
-    <ItemGroup Condition="'$(ExcludeNonRunnableFrameworksFromCoverage)' == 'true' And !$(IsRunnableTarget)">
+    <ItemGroup Condition="'$(ExcludeNonRunnableFrameworksFromCoverage)' == 'true' And !$(IsRunnableTarget) And '$(TargetFramework)' == 'netstandard2.1'">
         <!-- Assembly-level ExcludeFromCodeCoverage is only supported on netstandard 2.1 -->
-        <AssemblyAttribute Condition="'$(TargetFramework)' == 'netstandard2.1'" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
+        <!-- hax: remove an existing attribute if it exists before adding ours -->
+        <AssemblyAttribute Remove="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
     </ItemGroup>
 
     <!-- Status checks -->

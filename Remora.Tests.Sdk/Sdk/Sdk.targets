@@ -58,8 +58,10 @@
     </Choose>
 
     <!-- Suppress code coverage if requested -->
-    <ItemGroup Condition="'$(ExcludeTestsFromCoverage)' == 'true'">
-        <AssemblyAttribute Condition="$(IsNET) Or $(IsNETCore) Or '$(TargetFramework)' == 'netstandard2.1'" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
+    <ItemGroup Condition="'$(ExcludeTestsFromCoverage)' == 'true' And ($(IsNET) Or $(IsNETCore) Or '$(TargetFramework)' == 'netstandard2.1')">
+        <!-- hax: remove an existing attribute if it exists before adding ours -->
+        <AssemblyAttribute Remove="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
     </ItemGroup>
 
     <!-- Default packages -->
