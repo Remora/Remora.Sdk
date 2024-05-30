@@ -8,6 +8,7 @@
     <!-- Override target frameworks -->
     <PropertyGroup>
         <LibraryFrameworks>$(ExecutableFrameworks)</LibraryFrameworks>
+        <TargetNetStandard>false</TargetNetStandard>
     </PropertyGroup>
 
     <!-- Default code coverage properties -->
