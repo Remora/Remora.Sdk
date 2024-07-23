@@ -7,9 +7,10 @@
     <PropertyGroup>
         <Title>Remora.Tests.Sdk</Title>
         <Description>Provides default properties and targets for Remora-style unit test projects.</Description>
-        <VersionPrefix>3.0.2</VersionPrefix>
+        <VersionPrefix>3.0.3</VersionPrefix>
         <PackageReleaseNotes>
             Update dependencies.
+            Fix invalid targeting of .NET Standard in test projects.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
         <PackageTags>MSBuild;MSBuildSdk;Remora;Tests;Unit Tests</PackageTags>
