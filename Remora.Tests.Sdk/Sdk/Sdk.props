@@ -2,7 +2,7 @@
     <!-- Defaults for centrally managed package versions -->
     <Import Project="Sdk.Packages.props" />
 
-    <Import Project="Sdk.props" Sdk="Remora.Sdk" Version="3.1.1" Condition="'$(_RemoraInSourceBuild)' != 'true'"/>
+    <Import Project="Sdk.props" Sdk="Remora.Sdk" Version="3.1.2" Condition="'$(_RemoraInSourceBuild)' != 'true'"/>
     <Import Project="../../Remora.Sdk/Sdk/Sdk.props" Condition="'$(_RemoraInSourceBuild)' == 'true'"/>
 
     <!-- Override target frameworks -->
