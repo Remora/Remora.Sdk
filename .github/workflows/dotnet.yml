@@ -17,13 +17,12 @@ jobs:
     runs-on: ${{matrix.platform}}
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: | 
-            6.0.x
-            7.0.x
+          dotnet-version: |
             8.0.x
+            9.0.x
 
       - name: Build
         run: |
@@ -33,7 +32,8 @@ jobs:
       - name: Package
         if: matrix.platform == 'ubuntu-latest' && github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: dotnet pack -c Release --no-restore --no-build --version-suffix "github$GITHUB_RUN_ID"
-      - uses: actions/upload-artifact@v3
+
+      - uses: actions/upload-artifact@v4
         if: matrix.platform == 'ubuntu-latest'
         with:
           name: nupkg
@@ -45,15 +45,16 @@ jobs:
 
     steps:
       - name: Download package artifacts
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v4
         with:
           name: nupkg
           path: nuget
 
       # To ensure that the current version being pushed does not get pruned we prune first.
       - name: Prune packages older than 4 versions (new version is the 5th)
-        uses: smartsquaregmbh/delete-old-packages@v0.4.0
+        uses: smartsquaregmbh/delete-old-packages@v0.8.1
         with:
+          type: "nuget"
           keep: 4
           names: |
             Remora.Sdk
