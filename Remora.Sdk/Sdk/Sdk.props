@@ -10,8 +10,8 @@
 
     <!-- Default targeting configuration -->
     <PropertyGroup>
-        <ExecutableFrameworks Condition="'$(ExecutableFrameworks)' == ''">net8.0</ExecutableFrameworks>
-        <LibraryFrameworks Condition="'$(LibraryFrameworks)' == ''">net6.0;net7.0;$(ExecutableFrameworks)</LibraryFrameworks>
+        <ExecutableFrameworks Condition="'$(ExecutableFrameworks)' == ''">net9.0</ExecutableFrameworks>
+        <LibraryFrameworks Condition="'$(LibraryFrameworks)' == ''">net8.0;$(ExecutableFrameworks)</LibraryFrameworks>
         <NetStandardFrameworks Condition="'$(NetStandardFrameworks)' == ''">netstandard2.1</NetStandardFrameworks>
         <TargetNetStandard Condition="'$(TargetNetStandard)' == ''">true</TargetNetStandard>
     </PropertyGroup>
