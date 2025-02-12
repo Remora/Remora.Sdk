@@ -11,7 +11,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <LibraryFrameworks>net462</LibraryFrameworks>
+        <LibraryFrameworks>net472</LibraryFrameworks>
     </PropertyGroup>
 
     <Import Project="../../Remora.Tests.Sdk/Sdk/Sdk.targets" />
