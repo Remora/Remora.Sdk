@@ -32,28 +32,28 @@ Generally, the SDK defines or implements features within each category in an
 overridable or non-overridable way; non-overridable features are defined after
 user definitions, and overwrite any value you set.
 
-Properties marked with an asterisk (`*`) are defined by Remora.Sdk and are not
-part of the standard set of properties exposed by MSBuild or Microsoft.NET.Sdk.
+Properties marked with an asterisk (`*`) are part of the standard set of
+properties exposed by `MSBuild` or the `Microsoft.NET.Sdk` that get defined by `Remora.Sdk`.
 
 ### Compilation
 The following properties are defined by the SDK.
 
-| Property                  | Value | Overridable |
-|---------------------------|-------|-------------|
-| Deterministic             | true  | No          |
-| DebugSymbols              | true  | No          |
-| GenerateDocumentationFile | true  | No          |
+| Property                   | Value | Overridable |
+|----------------------------|-------|-------------|
+| Deterministic*             | true  | No          |
+| DebugSymbols*              | true  | No          |
+| GenerateDocumentationFile* | true  | No          |
 
 ### Framework Targets
 The following properties are defined by the SDK.
 
-| Property               | Value                | Overridable |
-|------------------------|----------------------|-------------|
-| LibraryFrameworks*     | net6.0;net7.0;net8.0 | Yes         |
-| ExecutableFrameworks*  | net8.0               | Yes         |
-| NetStandardFrameworks* | netstandard2.1       | Yes         |
-| TargetFrameworks       | (varies)             | Yes         |
-| TargetNetStandard*     | true                 | Yes         |
+| Property              | Value                | Overridable |
+|-----------------------|----------------------|-------------|
+| LibraryFrameworks     | net6.0;net7.0;net8.0 | Yes         |
+| ExecutableFrameworks  | net8.0               | Yes         |
+| NetStandardFrameworks | netstandard2.1       | Yes         |
+| TargetFrameworks*     | (varies)             | Yes         |
+| TargetNetStandard     | true                 | Yes         |
 
 If `TargetNetStandard` is `true`, `netstandard2.1` will be included as a target 
 when building libraries. Set the property to `false` if this is undesirable.
@@ -69,9 +69,9 @@ framework sets.
 ### Language Support
 The following properties are defined by the SDK.
 
-| Property    | Value  | Overridable |
-|-------------|--------|-------------|
-| LangVersion | latest | Yes         |
+| Property     | Value  | Overridable |
+|--------------|--------|-------------|
+| LangVersion* | latest | Yes         |
 
 The following packages are added by the SDK.
 
@@ -83,13 +83,13 @@ The following packages are added by the SDK.
 ### Code Analysis
 The following properties are defined by the SDK.
 
-| Property            | Value                                          | Overridable |
-|---------------------|------------------------------------------------|-------------|
-| WarningsAsErrors    | (multiple; nullability warnings)               | Yes         |
-| NoWarn              | (multiple; problematic warnings from packages) | Yes         |
-| Nullable            | enable                                         | No          |
-| AnalysisLevel       | 7                                              | No          |
-| CodeAnalysisRuleSet | (internal value)                               | No          |
+| Property             | Value                                          | Overridable |
+|----------------------|------------------------------------------------|-------------|
+| WarningsAsErrors*    | (multiple; nullability warnings)               | Yes         |
+| NoWarn*              | (multiple; problematic warnings from packages) | Yes         |
+| Nullable*            | enable                                         | No          |
+| AnalysisLevel*       | 7                                              | No          |
+| CodeAnalysisRuleSet* | (internal value)                               | No          |
 
 The following packages are added by the SDK.
 
@@ -109,9 +109,9 @@ compilation errors; it is highly encouraged to leave it this way.
 ### Code Coverage
 The following properties are defined by the SDK.
 
-| Property                                  | Value | Overridable |
-|-------------------------------------------|-------|-------------|
-| ExcludeNonRunnableFrameworksFromCoverage* | true  | Yes         |
+| Property                                 | Value | Overridable |
+|------------------------------------------|-------|-------------|
+| ExcludeNonRunnableFrameworksFromCoverage | true  | Yes         |
 
 
 This property controls disabling of coverage generations for assemblies that
@@ -121,31 +121,31 @@ percentages.
 ### NuGet Package Generation
 The following properties are defined by the SDK.
 
-| Property                        | Value                                  | Overridable |
-|---------------------------------|----------------------------------------|-------------|
-| IsPackable                      | true                                   | Yes         |
-| Title                           | $(AssemblyName)                        | Yes         |
-| Authors                         | $(LegalAuthor)                         | Yes         |
-| PackageIconPath*                | (internal)                             | Yes         |
-| PackageRequireLicenseAcceptance | true                                   | Yes         |
-| Copyright                       | $(LegalCopyrightHolder) <current year> | No          |
-| IncludeSymbols                  | $(IncludeBuildOutput)                  | No          |
-| IncludeSource                   | $(IncludeBuildOutput)                  | No          |
-| EmbedUntrackedSources           | $(IncludeBuildOutput)                  | No          |
-| EmbedAllSources                 | $(IncludeBuildOutput)                  | No          |
-| PublishRepositoryUrl            | true                                   | No          |
-| SymbolPackageFormat             | snupkg                                 | No          |
-| PackageReadmeFile               | README.md                              | No          |
-| PackageLicenseExpression        | $(LegalLicense)                        | No          |
-| PackageIcon                     | (filename of PackageIconPath)          | No          |
+| Property                         | Value                                  | Overridable |
+|----------------------------------|----------------------------------------|-------------|
+| IsPackable*                      | true                                   | Yes         |
+| Title*                           | $(AssemblyName)                        | Yes         |
+| Authors*                         | $(LegalAuthor)                         | Yes         |
+| PackageIconPath                  | (internal)                             | Yes         |
+| PackageRequireLicenseAcceptance* | true                                   | Yes         |
+| Copyright*                       | $(LegalCopyrightHolder) <current year> | No          |
+| IncludeSymbols*                  | $(IncludeBuildOutput)                  | No          |
+| IncludeSource*                   | $(IncludeBuildOutput)                  | No          |
+| EmbedUntrackedSources*           | $(IncludeBuildOutput)                  | No          |
+| EmbedAllSources*                 | $(IncludeBuildOutput)                  | No          |
+| PublishRepositoryUrl*            | true                                   | No          |
+| SymbolPackageFormat*             | snupkg                                 | No          |
+| PackageReadmeFile*               | README.md                              | No          |
+| PackageLicenseExpression*        | $(LegalLicense)                        | No          |
+| PackageIcon*                     | (filename of PackageIconPath)          | No          |
 
 The following properties are not defined, but cause a compilation warning if 
 left empty or unset.
 
-| Property          | 
-|-------------------|
-| PackageTags       |
-| PackageProjectUrl |
+| Property           | 
+|--------------------|
+| PackageTags*       |
+| PackageProjectUrl* |
 
 The following packages are added by the SDK.
 
@@ -166,14 +166,14 @@ appropriate for Remora projects, but may be overridden to provide your own icon.
 ### Licensing
 The following properties are defined by the SDK.
 
-| Property              | Value             | Overridable | Required |
-|-----------------------|-------------------|-------------|----------|
-| LegalLicense*         | LGPL-3.0-or-later | Yes         | Yes      |
-| LegalAuthor*          |                   | Yes         | Yes      |
-| LegalCopyrightHolder* | $(LegalAuthor)    | Yes         | Yes      |
-| LegalEmail*           |                   | Yes         | Yes      |
-| LicenseTextFile*      | (internal)        | Yes         | Yes      |
-| UseSPDXFileHeaders*   | false             | Yes         | No       |
+| Property             | Value             | Overridable | Required |
+|----------------------|-------------------|-------------|----------|
+| LegalLicense         | LGPL-3.0-or-later | Yes         | Yes      |
+| LegalAuthor          |                   | Yes         | Yes      |
+| LegalCopyrightHolder | $(LegalAuthor)    | Yes         | Yes      |
+| LegalEmail           |                   | Yes         | Yes      |
+| LicenseTextFile      | (internal)        | Yes         | Yes      |
+| UseSPDXFileHeaders   | false             | Yes         | No       |
 
 Of note is that `LegalLicense` defaults to LGPLv3 or later; this is the standard
 for Remora projects, but you may choose another license expression if required.
