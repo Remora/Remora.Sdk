@@ -40,6 +40,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentrallyManagedPackageVers
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetFrameworkTestProject", "Tests\NetFrameworkTestProject\NetFrameworkTestProject.csproj", "{9A20B528-1711-4B2A-B6F1-BD3DD235B38C}"
 EndProject
+Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "Remora.Sdk.Web", "Remora.Sdk.Web\Remora.Sdk.Web.msbuildproj", "{AC9B5643-7E81-42C8-B704-DC2E23BFD153}"
+EndProject
+Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "Remora.Sdk.Razor", "Remora.Sdk.Razor\Remora.Sdk.Razor.msbuildproj", "{858B0602-7DDC-4060-A023-34A50AC6D20D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +82,14 @@ Global
 		{9A20B528-1711-4B2A-B6F1-BD3DD235B38C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A20B528-1711-4B2A-B6F1-BD3DD235B38C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A20B528-1711-4B2A-B6F1-BD3DD235B38C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC9B5643-7E81-42C8-B704-DC2E23BFD153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC9B5643-7E81-42C8-B704-DC2E23BFD153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC9B5643-7E81-42C8-B704-DC2E23BFD153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC9B5643-7E81-42C8-B704-DC2E23BFD153}.Release|Any CPU.Build.0 = Release|Any CPU
+		{858B0602-7DDC-4060-A023-34A50AC6D20D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{858B0602-7DDC-4060-A023-34A50AC6D20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{858B0602-7DDC-4060-A023-34A50AC6D20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{858B0602-7DDC-4060-A023-34A50AC6D20D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

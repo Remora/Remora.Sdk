@@ -1,0 +1,25 @@
+<Project>
+	<!-- Defaults for centrally managed package versions -->
+	<Import Project="Sdk.Packages.props"/>
+
+	<!-- Override Remora.Sdk to skip importing Microsoft.NET.Sdk-->
+	<PropertyGroup>
+		<UsingMicrosoftNETSdk>true</UsingMicrosoftNETSdk>
+		<RemoraSdkImportsMicrosoftSdk>false</RemoraSdkImportsMicrosoftSdk>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(UsingMicrosoftNETSdkWeb)' != 'true'">
+		<RemoraSdkWebImportsMicrosoftSdkWeb>true</RemoraSdkWebImportsMicrosoftSdkWeb>
+	</PropertyGroup>
+
+	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk.Web" Condition="'$(RemoraSdkWebImportsMicrosoftSdkWeb)' == 'true'"/>
+
+	<Import Project="Sdk.props" Sdk="Remora.Sdk" Version="3.1.2" Condition="'$(_RemoraInSourceBuild)' != 'true'"/>
+	<Import Project="../../Remora.Sdk/Sdk/Sdk.props" Condition="'$(_RemoraInSourceBuild)' == 'true'"/>
+
+	<!-- Override target frameworks -->
+	<PropertyGroup>
+		<TargetNetStandard>false</TargetNetStandard>
+	</PropertyGroup>
+
+</Project>

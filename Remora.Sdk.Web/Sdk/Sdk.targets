@@ -1,0 +1,35 @@
+<Project>
+	<!-- Override packability -->
+	<PropertyGroup Condition="'$(OutputType)' == 'Exe'">
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<TargetFrameworkVersion>$([MSBuild]::GetTargetFrameworkIdentifier($TargetFramework))</TargetFrameworkVersion>
+	<PropertyGroup>
+		<IsNET>$(TargetFrameworkVersion) == '.NETCoreApp'</IsNET>
+		<IsNETCore>$(TargetFrameworkVersion) == '.NETCoreApp'</IsNETCore>
+		<IsNETStandard>$(TargetFrameworkVersion) == '.NETStandard'</IsNETStandard>
+		<IsNETFramework>$(TargetFrameworkVersion) == '.NETFramework'</IsNETFramework>
+		<IsRunnableTarget>$(TargetFrameworkVersion) != '.NETStandard'</IsRunnableTarget>
+	</PropertyGroup>
+	
+	<!-- Default Packages-->
+	<Choose>
+		<When Condition="'$(ManagePackageVersionsCentrally)' == true">
+			<ItemGroup>
+				<!-- TODO: Include any default package references. -->
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<!-- TODO: Include any default package references.-->
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+	
+	<!-- Import last to respect set properties. -->
+	<Import Project="Sdk.targets" Sdk="Remora.Sdk" Version="3.1.2" Condition="'$(_RemoraInSourceBuild)' != 'true'"/>
+	<Import Project="../../Remora.Sdk/Sdk/Sdk.targets" Condition="'$(_RemoraInSourceBuild)' == 'true'"/>
+
+	<Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.Web" Condition="'$(RemoraSdkWebImportsMicrosoftSdkWeb)' == 'true'"/>
+</Project>
