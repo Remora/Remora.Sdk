@@ -1,0 +1,10 @@
+<Project>
+	
+	<!-- 
+		Centrally managed versions for the default SDK packages - remember to update the direct references in
+		Sdk.targets, too
+	-->
+	<ItemGroup>
+	</ItemGroup>
+	
+</Project>
